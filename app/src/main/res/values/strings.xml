@@ -1,8 +1,15 @@
 <resources>
-    <string name="app_name">Istherepalmoilinside</string>
+    <string name="app_name">Провери за палмово масло</string>
+    <string name="app_name2">Бърза проверка за \n съдържание на \nпалмово масло</string>
+
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Настройки</string>
+    <string name="menu_check">Провери</string>
+    <string name="menu_list">Списък продукти</string>
+    <string name="menu_more">Повече...</string>
+    <string name="menu_about">За нас...</string>
 </resources>
