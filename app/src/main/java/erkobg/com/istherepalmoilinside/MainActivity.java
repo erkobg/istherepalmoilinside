@@ -3,6 +3,8 @@ package erkobg.com.istherepalmoilinside;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +22,9 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import erkobg.com.istherepalmoilinside.Fragments.AboutFragment;
+import erkobg.com.istherepalmoilinside.Fragments.HomeFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -31,15 +36,14 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        TextView mainText = (TextView)findViewById(R.id.mainText);
-        mainText.setText(Html.fromHtml(getString(R.string.main_text)));
+      /*  */
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             callBarcodeIntent();
+                callBarcodeIntent();
             }
         });
 
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity
 
     private void callBarcodeIntent() {
         IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.PRODUCT_CODE_TYPES );
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.PRODUCT_CODE_TYPES);
         integrator.setPrompt("Scan a barcode");
         integrator.setCameraId(0);  // Use a specific camera of the device
         integrator.setBeepEnabled(true);
@@ -64,11 +68,12 @@ public class MainActivity extends AppCompatActivity
 
         integrator.initiateScan();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null) {
-            if(result.getContents() == null) {
+        if (result != null) {
+            if (result.getContents() == null) {
                 Log.d("MainActivity", "Cancelled scan");
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
@@ -118,7 +123,7 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+     /*   // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_main) {
@@ -129,11 +134,64 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_more) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_about) {
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+        return true; }
+        */
+        displayView(item.getItemId());
         return true;
+
+    }
+
+
+    public void displayView(int viewId) {
+
+        Fragment fragment = null;
+        String title = getString(R.string.app_name);
+
+        switch (viewId) {
+            case R.id.nav_main:
+                fragment = new HomeFragment();
+                title = "Home";
+
+                break;
+
+
+            case R.id.nav_camera:
+
+
+                break;
+
+            case R.id.nav_list:
+                break;
+
+            case R.id.nav_more:
+                break;
+
+
+            case R.id.nav_about:
+                fragment = new AboutFragment();
+                title = "About";
+                break;
+
+        }
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_container, fragment);
+            ft.commit();
+        }
+
+        // set the toolbar title
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+
     }
 }
