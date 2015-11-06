@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -16,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -27,6 +25,7 @@ import erkobg.com.istherepalmoilinside.Fragments.HomeFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private boolean viewIsAtHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,19 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-      /*  */
+        // Check that the activity is using the layout version with
+        // the fragment_container FrameLayout
+        if (findViewById(R.id.fragment_container) != null) {
+
+            // However, if we're being restored from a previous state,
+            // then we don't need to do anything and should return or else
+            // we could end up with overlapping fragments.
+            if (savedInstanceState != null) {
+                return;
+            }
+
+            displayView(R.id.nav_home);
+        }
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -55,6 +66,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        //Initialy launch the scanner as this is the intended action in most cases
         callBarcodeIntent();
     }
 
@@ -74,10 +88,9 @@ public class MainActivity extends AppCompatActivity
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() == null) {
-                Log.d("MainActivity", "Cancelled scan");
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
-                Log.d("MainActivity", "Scanned");
+                //TODO: add code for passing scanned code to the Fragments where we show resulting data
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
             }
         } else {
@@ -94,7 +107,12 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (!viewIsAtHome) { //if the current view is not the News fragment
+                displayView(R.id.nav_home); //display the Home fragment
+            } else {
+                super.onBackPressed();
+            }
+
         }
     }
 
@@ -123,24 +141,7 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-     /*   // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.nav_main) {
-
-        } else if (id == R.id.nav_camera) {
-            callBarcodeIntent();
-        } else if (id == R.id.nav_list) {
-
-        } else if (id == R.id.nav_more) {
-
-        } else if (id == R.id.nav_about) {
-
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true; }
-        */
         displayView(item.getItemId());
         return true;
 
@@ -153,33 +154,44 @@ public class MainActivity extends AppCompatActivity
         String title = getString(R.string.app_name);
 
         switch (viewId) {
-            case R.id.nav_main:
+            case R.id.nav_home:
                 fragment = new HomeFragment();
-                title = "Home";
-
+                title = "Начало";
+                viewIsAtHome = true;
                 break;
 
 
             case R.id.nav_camera:
+                callBarcodeIntent();
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                drawer.closeDrawer(GravityCompat.START);
 
+                //no need to continue as this is another activity
 
-                break;
+                return;
+
 
             case R.id.nav_list:
+                title = "Списък";
+                viewIsAtHome = false;
                 break;
 
             case R.id.nav_more:
+                title = "За нас...";
+                viewIsAtHome = false;
                 break;
 
 
             case R.id.nav_about:
                 fragment = new AboutFragment();
                 title = "About";
+                viewIsAtHome = false;
                 break;
 
         }
 
         if (fragment != null) {
+
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fragment_container, fragment);
             ft.commit();

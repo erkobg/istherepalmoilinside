@@ -4,9 +4,8 @@
     <string name="side_menu_title">Бърза проверка за \n съдържание на \nпалмово масло</string>
 
 
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Отвори меню</string>
+    <string name="navigation_drawer_close">Затвори меню</string>
 
     <string name="action_settings">Настройки</string>
     <string name="menu_main">Начало</string>
