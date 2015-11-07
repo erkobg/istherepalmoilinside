@@ -52,14 +52,13 @@ public class FirebaseHelper {
         return MyApplication.getContext();
     }
 
-    public void CreateNewProduct(String barcodeText, String name, String description, Boolean hasPalmOil) throws Exception {
+    public void CreateNewProduct(Product new_product) throws Exception {
 
         Log.d("FireBase", FirebaseDataURL);
         if (FirebaseDataURL == null || FirebaseDataURL.equals(""))
             throw new Exception(" Properties not readed and URL is not valid");
         Firebase ref = new Firebase(FirebaseDataURL);
         Firebase prodRefCloud = ref.child(ProductsStr);
-        Product new_product = new Product(barcodeText, name, description, hasPalmOil);
         prodRefCloud.push().setValue(new_product);
     }
 
@@ -78,7 +77,12 @@ public class FirebaseHelper {
                 if (snapshot.getValue() != null) {
                     System.out.println(snapshot.getKey());
                     Log.v("FirebaseHelper", "Exists");
-                    listener.onProductCheckCompletedSuccess(snapshot);
+                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        Product product = postSnapshot.getValue(Product.class);
+                        listener.onProductCheckCompletedSuccess(product);
+
+                    }
+
                 } else {
                     Log.v("FirebaseHelper", "Not Existing");
                     listener.onProductCheckCompletedFail();

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.lang.reflect.Field;
 
+import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.R;
 import erkobg.com.istherepalmoilinside.Utils.FirebaseHelper;
 import erkobg.com.istherepalmoilinside.Utils.MyBaseFragment;
@@ -41,8 +42,8 @@ public class NewProductFragment extends MyBaseFragment {
             public void onClick(View v) {
                 try {
                     FirebaseHelper tmp = FirebaseHelper.getInstance(null, null);
-
-                    tmp.CreateNewProduct(barcodeText.getText().toString(), name.getText().toString(), description.getText().toString(), HasPalmOil.isEnabled());
+                    Product new_product = new Product(barcodeText.getText().toString(), name.getText().toString(), description.getText().toString(), HasPalmOil.isEnabled());
+                    tmp.CreateNewProduct(new_product);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

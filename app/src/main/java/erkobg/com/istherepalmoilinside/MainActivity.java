@@ -24,6 +24,7 @@ import com.firebase.client.Firebase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.Fragments.AboutFragment;
 import erkobg.com.istherepalmoilinside.Fragments.HomeFragment;
 import erkobg.com.istherepalmoilinside.Fragments.NewProductFragment;
@@ -160,11 +161,11 @@ public class MainActivity extends AppCompatActivity
         displayView(viewId, "", null);
     }
 
-    public void displayView(int viewId, DataSnapshot dataSnapshot) {
-        displayView(viewId, "", dataSnapshot);
+    public void displayView(int viewId, Product product) {
+        displayView(viewId, "", product);
     }
 
-    public void displayView(int viewId, String barCode, DataSnapshot dataSnapshot) {
+    public void displayView(int viewId, String barCode, Product product) {
 
         Fragment fragment = null;
         String title = getString(R.string.app_name);
@@ -218,12 +219,12 @@ public class MainActivity extends AppCompatActivity
             case NAVIGATE_SHOW_PRODUCT:
                 fragment = new ShowProductFragment();
                 title = "Продукт";
-                args = new Bundle();
-                args.putString("barCode", (String) dataSnapshot.child("barcode").getValue());
-                args.putString("name", (String) dataSnapshot.child("name").getValue());
-                args.putString("description", (String) dataSnapshot.child("description").getValue());
-                args.putBoolean("hasPalmOil", (Boolean) dataSnapshot.child("hasPalmOil").getValue());
-                fragment.setArguments(args);
+                Bundle args2 = new Bundle();
+                args2.putString("barCode", product.getBarcode());
+                args2.putString("name", product.getName());
+                args2.putString("description", product.getDescription());
+                args2.putBoolean("hasPalmOil", product.isHasPalmOil());
+                fragment.setArguments(args2);
                 viewIsAtHome = false;
                 break;
         }
@@ -284,9 +285,9 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    public void onProductCheckCompletedSuccess(DataSnapshot dataSnapshot) {
+    public void onProductCheckCompletedSuccess(Product product) {
         Log.d("onDataCheckCompleted", "Found");
-        displayView(NAVIGATE_SHOW_PRODUCT, dataSnapshot);
+        displayView(NAVIGATE_SHOW_PRODUCT, product);
 
     }
 
