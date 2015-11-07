@@ -1,6 +1,8 @@
 package erkobg.com.istherepalmoilinside;
 
+import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -17,24 +19,56 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import erkobg.com.istherepalmoilinside.Fragments.AboutFragment;
 import erkobg.com.istherepalmoilinside.Fragments.HomeFragment;
+import erkobg.com.istherepalmoilinside.Fragments.NewProductFragment;
+import erkobg.com.istherepalmoilinside.Fragments.ShowProductFragment;
+import erkobg.com.istherepalmoilinside.Interfaces.OnDataCheckListener;
+import erkobg.com.istherepalmoilinside.Utils.FirebaseHelper;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OnDataCheckListener {
     private boolean viewIsAtHome;
-
+    static final int NAVIGATE_ADD_PRODUCT = 99999;
+    static final int NAVIGATE_SHOW_PRODUCT = 99998;
+    static final int NAVIGATE_LIST_PRODUCTS = 99997;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("MainActivity", "onCreate(Bundle savedInstanceState)");
         super.onCreate(savedInstanceState);
+        //Setup Firebase on Android!
+        Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
+
+
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                callBarcodeIntent();
+
+            }
+        });
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout
         if (findViewById(R.id.fragment_container) != null) {
@@ -49,56 +83,31 @@ public class MainActivity extends AppCompatActivity
             displayView(R.id.nav_home);
         }
 
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                callBarcodeIntent();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-
         //Initialy launch the scanner as this is the intended action in most cases
         callBarcodeIntent();
+
+
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+
+    }
     private void callBarcodeIntent() {
+        if (isCameraAvailable()) {
         IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.PRODUCT_CODE_TYPES);
+            integrator.setDesiredBarcodeFormats(IntentIntegrator.PRODUCT_CODE_TYPES);
         integrator.setPrompt("Scan a barcode");
         integrator.setCameraId(0);  // Use a specific camera of the device
         integrator.setBeepEnabled(true);
         integrator.setBarcodeImageEnabled(true);
 
         integrator.initiateScan();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() == null) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-            } else {
-                //TODO: add code for passing scanned code to the Fragments where we show resulting data
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-            }
         } else {
-            Log.d("MainActivity", "Weird");
-            // This is important, otherwise the result will not be passed to the fragment
-            super.onActivityResult(requestCode, resultCode, data);
+            Toast.makeText(this, "Rear Facing Camera Unavailable", Toast.LENGTH_SHORT).show();
         }
     }
+
 
 
     @Override
@@ -129,12 +138,12 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_login) {
+            //TODO: handle Login users
+            Toast.makeText(this, "Login still not implemented", Toast.LENGTH_LONG).show();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -147,8 +156,15 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
     public void displayView(int viewId) {
+        displayView(viewId, "", null);
+    }
+
+    public void displayView(int viewId, DataSnapshot dataSnapshot) {
+        displayView(viewId, "", dataSnapshot);
+    }
+
+    public void displayView(int viewId, String barCode, DataSnapshot dataSnapshot) {
 
         Fragment fragment = null;
         String title = getString(R.string.app_name);
@@ -177,22 +193,56 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_more:
-                title = "За нас...";
+                title = "Повече";
                 viewIsAtHome = false;
                 break;
 
 
             case R.id.nav_about:
                 fragment = new AboutFragment();
-                title = "About";
+                title = "За нас...";
                 viewIsAtHome = false;
                 break;
 
+
+            case NAVIGATE_ADD_PRODUCT:
+                fragment = new NewProductFragment();
+                title = "Добави продукт";
+                Bundle args = new Bundle();
+                args.putString("barCode", barCode);
+                fragment.setArguments(args);
+                viewIsAtHome = false;
+                break;
+
+
+            case NAVIGATE_SHOW_PRODUCT:
+                fragment = new ShowProductFragment();
+                title = "Продукт";
+                args = new Bundle();
+                args.putString("barCode", (String) dataSnapshot.child("barcode").getValue());
+                args.putString("name", (String) dataSnapshot.child("name").getValue());
+                args.putString("description", (String) dataSnapshot.child("description").getValue());
+                args.putBoolean("hasPalmOil", (Boolean) dataSnapshot.child("hasPalmOil").getValue());
+                fragment.setArguments(args);
+                viewIsAtHome = false;
+                break;
         }
+       /* FragmentManager fm = getFragmentManager();
+        mTaskFragment = (TaskFragment) fm.findFragmentByTag(TAG_TASK_FRAGMENT);
+
+        // If the Fragment is non-null, then it is currently being
+        // retained across a configuration change.
+        if (mTaskFragment == null) {
+            mTaskFragment = new TaskFragment();
+            fm.beginTransaction().add(mTaskFragment, TAG_TASK_FRAGMENT).commit();
+        }*/
+
+
 
         if (fragment != null) {
-
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            Log.d("displayView", title);
+            Log.d("displayView", title);
             ft.replace(R.id.fragment_container, fragment);
             ft.commit();
         }
@@ -206,4 +256,57 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            if (result.getContents() == null) {
+                displayView(R.id.nav_home); //display the Home fragment
+            } else {
+                //TODO: add code for passing scanned code to the Fragments where we show resulting data
+                String scannedCode = result.getContents();
+                FirebaseHelper tmp = FirebaseHelper.getInstance(this, this);
+
+                try {
+                    tmp.CheckProduct(scannedCode);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                // displayView(NAVIGATE_ADD_PRODUCT, scannedCode);
+            }
+        } else {
+            Log.d("MainActivity", "Weird");
+            // This is important, otherwise the result will not be passed to the fragment
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+
+    @Override
+    public void onProductCheckCompletedSuccess(DataSnapshot dataSnapshot) {
+        Log.d("onDataCheckCompleted", "Found");
+        displayView(NAVIGATE_SHOW_PRODUCT, dataSnapshot);
+
+    }
+
+    @Override
+    public void onProductCheckCompletedFail() {
+        Log.d("Fail", "Not Found");
+        Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
+        displayView(NAVIGATE_ADD_PRODUCT);
+    }
+
+    @Override
+    public void onDataCheckCancel() {
+        Log.d("onDataCheckCancel", "Error");
+        Toast.makeText(this, "Canceled", Toast.LENGTH_LONG).show();
+        displayView(R.id.nav_home);
+    }
+
+    public boolean isCameraAvailable() {
+        PackageManager pm = getPackageManager();
+        return pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
+    }
+
 }

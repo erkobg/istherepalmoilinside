@@ -8,9 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import erkobg.com.istherepalmoilinside.R;
+import java.lang.reflect.Field;
 
-public class HomeFragment  extends Fragment  {
+import erkobg.com.istherepalmoilinside.R;
+import erkobg.com.istherepalmoilinside.Utils.MyBaseFragment;
+
+public class HomeFragment extends MyBaseFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         //Inflate the layout for this fragment
@@ -20,5 +23,6 @@ public class HomeFragment  extends Fragment  {
         mainText.setText(Html.fromHtml(getString(R.string.main_text)));
         return v;
     }
+
 
 }

@@ -7,7 +7,7 @@
     <string name="navigation_drawer_open">Отвори меню</string>
     <string name="navigation_drawer_close">Затвори меню</string>
 
-    <string name="action_settings">Настройки</string>
+    <string name="action_login">Login</string>
     <string name="menu_main">Начало</string>
     <string name="menu_camera">Провери</string>
     <string name="menu_list">Списък продукти</string>
@@ -15,7 +15,7 @@
     <string name="menu_about">За нас...</string>
     <string name="main_text">
         <![CDATA[
-     <h1> Палмово масло   </h1>
+     <h1> Палмово масло </h1>
         <p>Палмовото масло влезе в нашата кулинария съвсем наскоро. Ако си направим труда да изчетем повече етикети на стоки в магазина, ще видим, че то се съдържа почти навсякъде: бонбони, бисквити, пържени картофи, течен шоколад, чипсове, спагети, сухари, спагети и др.</p>
         <p>\nХидрогенизираните мазнини поевтиняват продуктите и са много изгодни за производителя, но потребителят плаща за това със здравето си.</p>
 
@@ -23,4 +23,9 @@
         <p>\nПалмовото масло е силен канцероген. Развитите страни отдавна са се отказали от внасянето и влагането на палмовото масло в хранителната индустрия, те ограничават продажбата на продукти, които го съдържат, и на етикета задължително отбелязват наличието му.</p>
 ]]>
         </string>
+    <string name="new_product_name">Name</string>
+    <string name="new_product_barcode">Barcode</string>
+    <string name="new_product_desc">Description</string>
+    <string name="new_product_hasPalmoil">Palm Oil inside?</string>
+    <string name="new_product_addNewbtn">Add new product</string>
 </resources>
