@@ -1,19 +1,14 @@
 package erkobg.com.istherepalmoilinside.Fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.lang.reflect.Field;
-
 import erkobg.com.istherepalmoilinside.R;
-import erkobg.com.istherepalmoilinside.Utils.FirebaseHelper;
 import erkobg.com.istherepalmoilinside.Utils.MyBaseFragment;
 
 public class ShowProductFragment extends MyBaseFragment {
@@ -41,8 +36,14 @@ public class ShowProductFragment extends MyBaseFragment {
         final TextView description = (TextView) v.findViewById(R.id.desc);
         description.setText(descrStr);
         final CheckBox HasPalmOil = (CheckBox) v.findViewById(R.id.HasPalmOil);
+        final ImageView imageView = (ImageView) v.findViewById(R.id.image_HasPalmOil);
+
         if (hasPalmOilBoolean) {
             HasPalmOil.setChecked(true);
+            imageView.setImageResource(R.drawable.yes);
+        } else {
+            imageView.setImageResource(R.drawable.no);
+
         }
 
 
