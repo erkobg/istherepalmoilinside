@@ -1,6 +1,5 @@
 package erkobg.com.istherepalmoilinside;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -27,17 +25,17 @@ import com.google.zxing.integration.android.IntentResult;
 import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.Fragments.AboutFragment;
 import erkobg.com.istherepalmoilinside.Fragments.HomeFragment;
+import erkobg.com.istherepalmoilinside.Fragments.MyProgressFragment;
 import erkobg.com.istherepalmoilinside.Fragments.NewProductFragment;
 import erkobg.com.istherepalmoilinside.Fragments.ShowProductFragment;
-import erkobg.com.istherepalmoilinside.Interfaces.OnDataCheckListener;
+import erkobg.com.istherepalmoilinside.Interfaces.OnDataProcessListener;
+import erkobg.com.istherepalmoilinside.Utils.CONSTANTS;
 import erkobg.com.istherepalmoilinside.Utils.FirebaseHelper;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OnDataCheckListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OnDataProcessListener {
     private boolean viewIsAtHome;
-    static final int NAVIGATE_ADD_PRODUCT = 99999;
-    static final int NAVIGATE_SHOW_PRODUCT = 99998;
-    static final int NAVIGATE_LIST_PRODUCTS = 99997;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("MainActivity", "onCreate(Bundle savedInstanceState)");
@@ -47,10 +45,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -86,29 +80,28 @@ public class MainActivity extends AppCompatActivity
 
         //Initialy launch the scanner as this is the intended action in most cases
         callBarcodeIntent();
-
-
     }
 
+    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public void onSaveInstanceState(Bundle outState) {
-
+        //TODO check whether it is working or not?
     }
+
     private void callBarcodeIntent() {
         if (isCameraAvailable()) {
-        IntentIntegrator integrator = new IntentIntegrator(this);
+            IntentIntegrator integrator = new IntentIntegrator(this);
             integrator.setDesiredBarcodeFormats(IntentIntegrator.PRODUCT_CODE_TYPES);
-        integrator.setPrompt("Scan a barcode");
-        integrator.setCameraId(0);  // Use a specific camera of the device
-        integrator.setBeepEnabled(true);
-        integrator.setBarcodeImageEnabled(true);
+            integrator.setPrompt(getString(R.string.string_scan_barcode));
+            integrator.setCameraId(0);  // Use a specific camera of the device
+            integrator.setBeepEnabled(true);
+            integrator.setBarcodeImageEnabled(true);
 
-        integrator.initiateScan();
+            integrator.initiateScan();
         } else {
-            Toast.makeText(this, "Rear Facing Camera Unavailable", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.camera_not_available, Toast.LENGTH_SHORT).show();
         }
     }
-
 
 
     @Override
@@ -142,7 +135,7 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_login) {
             //TODO: handle Login users
-            Toast.makeText(this, "Login still not implemented", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.login_message, Toast.LENGTH_LONG).show();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -157,15 +150,19 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public void displayView(int viewId) {
+    private void displayView(int viewId) {
         displayView(viewId, "", null);
     }
 
-    public void displayView(int viewId, Product product) {
+    private void displayView(int viewId, Product product) {
         displayView(viewId, "", product);
     }
 
-    public void displayView(int viewId, String barCode, Product product) {
+    private void displayView(int viewId, String barCode) {
+        displayView(viewId, barCode, null);
+    }
+
+    private void displayView(int viewId, String barCode, Product product) {
 
         Fragment fragment = null;
         String title = getString(R.string.app_name);
@@ -173,57 +170,55 @@ public class MainActivity extends AppCompatActivity
         switch (viewId) {
             case R.id.nav_home:
                 fragment = new HomeFragment();
-                title = "Начало";
+                title = getString(R.string.title_home);
                 viewIsAtHome = true;
                 break;
-
-
             case R.id.nav_camera:
                 callBarcodeIntent();
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
-
                 //no need to continue as this is another activity
-
                 return;
-
-
             case R.id.nav_list:
-                title = "Списък";
+                title = getString(R.string.title_list);
                 viewIsAtHome = false;
                 break;
 
             case R.id.nav_more:
-                title = "Повече";
+                title = getString(R.string.title_more);
                 viewIsAtHome = false;
                 break;
 
 
             case R.id.nav_about:
                 fragment = new AboutFragment();
-                title = "За нас...";
+                title = getString(R.string.title_about);
+                viewIsAtHome = false;
+                break;
+            case CONSTANTS.NAVIGATE_SHOW_PROGRESS:
+                fragment = new MyProgressFragment();
+                title = getResources().getString(R.string.checking);
                 viewIsAtHome = false;
                 break;
 
-
-            case NAVIGATE_ADD_PRODUCT:
+            case CONSTANTS.NAVIGATE_ADD_PRODUCT:
                 fragment = new NewProductFragment();
-                title = "Добави продукт";
+                title = getString(R.string.title_new_product);
                 Bundle args = new Bundle();
-                args.putString("barCode", barCode);
+                args.putString(CONSTANTS.ARGUMENT_BAR_CODE, barCode);
                 fragment.setArguments(args);
                 viewIsAtHome = false;
                 break;
 
 
-            case NAVIGATE_SHOW_PRODUCT:
+            case CONSTANTS.NAVIGATE_SHOW_PRODUCT:
                 fragment = new ShowProductFragment();
-                title = "Продукт";
+                title = getString(R.string.title_show_product);
                 Bundle args2 = new Bundle();
-                args2.putString("barCode", product.getBarcode());
-                args2.putString("name", product.getName());
-                args2.putString("description", product.getDescription());
-                args2.putBoolean("hasPalmOil", product.isHasPalmOil());
+                args2.putString(CONSTANTS.ARGUMENT_BAR_CODE, product.getBarcode());
+                args2.putString(CONSTANTS.ARGUMENT_NAME, product.getName());
+                args2.putString(CONSTANTS.ARGUMENT_DESCRIPTION, product.getDescription());
+                args2.putBoolean(CONSTANTS.ARGUMENT_HAS_PALM_OIL, product.isHasPalmOil());
                 fragment.setArguments(args2);
                 viewIsAtHome = false;
                 break;
@@ -239,13 +234,11 @@ public class MainActivity extends AppCompatActivity
         }*/
 
 
-
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             Log.d("displayView", title);
-            Log.d("displayView", title);
             ft.replace(R.id.fragment_container, fragment);
-            ft.commit();
+            ft.commitAllowingStateLoss();
         }
 
         // set the toolbar title
@@ -265,7 +258,9 @@ public class MainActivity extends AppCompatActivity
             if (result.getContents() == null) {
                 displayView(R.id.nav_home); //display the Home fragment
             } else {
-                //TODO: add code for passing scanned code to the Fragments where we show resulting data
+                //First load Progress fragment!
+                displayView(CONSTANTS.NAVIGATE_SHOW_PROGRESS);
+                //then query for progress
                 String scannedCode = result.getContents();
                 FirebaseHelper tmp = FirebaseHelper.getInstance(this, this);
 
@@ -274,7 +269,7 @@ public class MainActivity extends AppCompatActivity
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                // displayView(NAVIGATE_ADD_PRODUCT, scannedCode);
+
             }
         } else {
             Log.d("MainActivity", "Weird");
@@ -287,25 +282,32 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onProductCheckCompletedSuccess(Product product) {
         Log.d("onDataCheckCompleted", "Found");
-        displayView(NAVIGATE_SHOW_PRODUCT, product);
+        displayView(CONSTANTS.NAVIGATE_SHOW_PRODUCT, product);
 
     }
 
     @Override
-    public void onProductCheckCompletedFail() {
+    public void onProductCheckCompletedFail(String barcode) {
         Log.d("Fail", "Not Found");
-        Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
-        displayView(NAVIGATE_ADD_PRODUCT);
+        Toast.makeText(this, R.string.not_found, Toast.LENGTH_LONG).show();
+        displayView(CONSTANTS.NAVIGATE_ADD_PRODUCT, barcode);
     }
 
     @Override
     public void onDataCheckCancel() {
         Log.d("onDataCheckCancel", "Error");
-        Toast.makeText(this, "Canceled", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.canceled, Toast.LENGTH_LONG).show();
         displayView(R.id.nav_home);
     }
 
-    public boolean isCameraAvailable() {
+    @Override
+    public void onDataSubmitted() {
+        Log.d("onDataSubmitted", "Successfully Added");
+        Toast.makeText(this, R.string.product_added, Toast.LENGTH_LONG).show();
+        displayView(R.id.nav_home);
+    }
+
+    private boolean isCameraAvailable() {
         PackageManager pm = getPackageManager();
         return pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
     }

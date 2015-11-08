@@ -12,35 +12,35 @@ import com.firebase.client.ValueEventListener;
 import java.util.Properties;
 
 import erkobg.com.istherepalmoilinside.Entities.Product;
-import erkobg.com.istherepalmoilinside.Interfaces.OnDataCheckListener;
+import erkobg.com.istherepalmoilinside.Interfaces.OnDataProcessListener;
+import erkobg.com.istherepalmoilinside.R;
 
 /**
  * Created by erkobg on 11/07/2015.
  */
 public class FirebaseHelper {
-    private AssetsPropertyReader assetsPropertyReader;
-    private Properties properties;
     private static FirebaseHelper instance = null;
-    String FirebaseDataURL = null;
-    String ProductsStr = "Products";
+    private String FirebaseDataURL = null;
+    private final static String ProductsStr = "Products";
 
 
-    private OnDataCheckListener listener;
+    private final OnDataProcessListener listener;
 
-    private FirebaseHelper(Context context, OnDataCheckListener plistener) {
+    private FirebaseHelper(Context context, OnDataProcessListener plistener) {
         // Exists only to defeat instantiation.
+        AssetsPropertyReader assetsPropertyReader;
         if (context == null) {
             assetsPropertyReader = new AssetsPropertyReader(getContext());
         } else {
             assetsPropertyReader = new AssetsPropertyReader(context);
         }
-        properties = assetsPropertyReader.getProperties("myproject.properties");
+        Properties properties = assetsPropertyReader.getProperties("myproject.properties");
         FirebaseDataURL = properties.getProperty("MyFirebaseDataURL");
         listener = plistener;
 
     }
 
-    public static FirebaseHelper getInstance(Context context, OnDataCheckListener plistener) {
+    public static FirebaseHelper getInstance(Context context, OnDataProcessListener plistener) {
         if (instance == null) {
             instance = new FirebaseHelper(context, plistener);
         }
@@ -56,19 +56,22 @@ public class FirebaseHelper {
 
         Log.d("FireBase", FirebaseDataURL);
         if (FirebaseDataURL == null || FirebaseDataURL.equals(""))
-            throw new Exception(" Properties not readed and URL is not valid");
+            throw new Exception(getContext().getString(R.string.firebase_url_empty));
+
         Firebase ref = new Firebase(FirebaseDataURL);
         Firebase prodRefCloud = ref.child(ProductsStr);
         prodRefCloud.push().setValue(new_product);
+        listener.onDataSubmitted();
     }
 
     public void CheckProduct(String barcodeText) throws Exception {
-
+        final String barcode = barcodeText;
         Log.d("FireBase", FirebaseDataURL);
         if (FirebaseDataURL == null || FirebaseDataURL.equals(""))
-            throw new Exception(" Properties not readed and URL is not valid");
+            throw new Exception(getContext().getString(R.string.firebase_url_empty));
         Firebase productRef = new Firebase(FirebaseDataURL);
         Log.d("CheckProduct", barcodeText);
+
         Query queryRef = productRef.child(ProductsStr).orderByChild("barcode").equalTo(barcodeText);
 
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -85,7 +88,7 @@ public class FirebaseHelper {
 
                 } else {
                     Log.v("FirebaseHelper", "Not Existing");
-                    listener.onProductCheckCompletedFail();
+                    listener.onProductCheckCompletedFail(barcode);
                 }
 
             }

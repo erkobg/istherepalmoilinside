@@ -1,8 +1,6 @@
 package erkobg.com.istherepalmoilinside.Fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,21 +8,19 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import java.lang.reflect.Field;
 
 import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.R;
+import erkobg.com.istherepalmoilinside.Utils.CONSTANTS;
 import erkobg.com.istherepalmoilinside.Utils.FirebaseHelper;
 import erkobg.com.istherepalmoilinside.Utils.MyBaseFragment;
 
 public class NewProductFragment extends MyBaseFragment {
-
-
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Bundle args = getArguments();
 
-        final String barCode = args.getString("barCode");
+        final String barCode = args.getString(CONSTANTS.ARGUMENT_BAR_CODE);
 //Inflate the layout for this fragment
         View v = inflater.inflate(
                 R.layout.new_product_fragment_layout, container, false);
@@ -40,9 +36,34 @@ public class NewProductFragment extends MyBaseFragment {
         final Button button = (Button) v.findViewById(R.id.addButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                //First validate inputs
+                String l_barcodeText = barcodeText.getText().toString().trim();
+                String l_name = name.getText().toString().trim();
+                String l_description = description.getText().toString().trim();
+                if (l_barcodeText.length() == 0) {
+                    barcodeText.setError(getString(R.string.mandat_barcode));
+                    return;
+                } else {
+                    barcodeText.setError(null);
+                }
+                if (l_name.length() == 0) {
+                    name.setError(getString(R.string.mandat_name));
+                    return;
+                } else {
+                    name.setError(null);
+                }
+                if (l_description.length() == 0) {
+                    description.setError(getString(R.string.mandat_description));
+                    return;
+                } else {
+                    description.setError(null);
+                }
+
+
+                //second if everything is ok - add the Product
                 try {
                     FirebaseHelper tmp = FirebaseHelper.getInstance(null, null);
-                    Product new_product = new Product(barcodeText.getText().toString(), name.getText().toString(), description.getText().toString(), HasPalmOil.isEnabled());
+                    Product new_product = new Product(l_barcodeText, l_name, l_description, HasPalmOil.isChecked());
                     tmp.CreateNewProduct(new_product);
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -15,26 +15,44 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
             android:text="@string/new_product_barcode"
             android:id="@+id/barcode"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/new_product_barcode"
+            android:focusable="false"
+            android:cursorVisible="true"
+            android:editable="false" />
+        </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
-            android:text="@string/new_product_name"
+            android:text=""
             android:id="@+id/name"
             android:layout_width="fill_parent"
+            android:hint="@string/new_product_name"
             android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
-            android:text="@string/new_product_desc"
+            android:text=""
             android:id="@+id/desc"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/new_product_desc"
             android:linksClickable="false"
             android:lines="5"
             android:gravity="top" />
+        </android.support.design.widget.TextInputLayout>
 
         <CheckBox
             android:id="@+id/HasPalmOil"

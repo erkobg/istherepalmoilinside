@@ -7,7 +7,7 @@
     <string name="navigation_drawer_open">Отвори меню</string>
     <string name="navigation_drawer_close">Затвори меню</string>
 
-    <string name="action_login">Login</string>
+    <string name="action_login">Влез</string>
     <string name="menu_main">Начало</string>
     <string name="menu_camera">Провери</string>
     <string name="menu_list">Списък продукти</string>
@@ -23,9 +23,27 @@
         <p>\nПалмовото масло е силен канцероген. Развитите страни отдавна са се отказали от внасянето и влагането на палмовото масло в хранителната индустрия, те ограничават продажбата на продукти, които го съдържат, и на етикета задължително отбелязват наличието му.</p>
 ]]>
         </string>
-    <string name="new_product_name">Name</string>
-    <string name="new_product_barcode">Barcode</string>
-    <string name="new_product_desc">Description</string>
-    <string name="new_product_hasPalmoil">Palm Oil inside?</string>
-    <string name="new_product_addNewbtn">Add new product</string>
+    <string name="new_product_name">Име на продукта</string>
+    <string name="new_product_barcode">Бракод</string>
+    <string name="new_product_desc">Описание</string>
+    <string name="new_product_hasPalmoil">Има ли палмово масло?</string>
+    <string name="new_product_addNewbtn">Добави нов продукт</string>
+    <string name="empty">Няма данни</string>
+    <string name="checking">Проверяваме....</string>
+    <string name="mandat_barcode">Баркода е задължително поле!</string>
+    <string name="mandat_name">Името е задължително поле!</string>
+    <string name="mandat_description">Описанието е задължително поле!</string>
+    <string name="string_scan_barcode">Сканирайте баркод</string>
+    <string name="camera_not_available">Няма камера!?</string>
+    <string name="login_message">Функционалността за вход е все още в процес на разработка</string>
+    <string name="title_home">Начало</string>
+    <string name="title_list">Списък</string>
+    <string name="title_more">Повече</string>
+    <string name="title_about">За нас...</string>
+    <string name="title_new_product">Добави продукт</string>
+    <string name="title_show_product">Продукт</string>
+    <string name="not_found">Не е намерен</string>
+    <string name="canceled">Спряно</string>
+    <string name="product_added">Продукта е добавен успешно!</string>
+    <string name="firebase_url_empty">Адреса за базата е невалидно или празно</string>
 </resources>

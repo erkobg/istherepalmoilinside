@@ -12,9 +12,9 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
 
-public class AssetsPropertyReader {
-    private Context context;
-    private Properties properties;
+class AssetsPropertyReader {
+    private final Context context;
+    private final Properties properties;
 
     public AssetsPropertyReader(Context context) {
         this.context = context;

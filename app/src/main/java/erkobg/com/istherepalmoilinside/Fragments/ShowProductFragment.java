@@ -9,19 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import erkobg.com.istherepalmoilinside.R;
+import erkobg.com.istherepalmoilinside.Utils.CONSTANTS;
 import erkobg.com.istherepalmoilinside.Utils.MyBaseFragment;
 
 public class ShowProductFragment extends MyBaseFragment {
-
 
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Bundle args = getArguments();
 
-        final String barCodeStr = args.getString("barCode");
-        final String nameStr = args.getString("name");
-        final String descrStr = args.getString("description");
-        final Boolean hasPalmOilBoolean = args.getBoolean("hasPalmOil");
+        final String barCodeStr = args.getString(CONSTANTS.ARGUMENT_BAR_CODE);
+        final String nameStr = args.getString(CONSTANTS.ARGUMENT_NAME);
+        final String descrStr = args.getString(CONSTANTS.ARGUMENT_DESCRIPTION);
+        final Boolean hasPalmOilBoolean = args.getBoolean(CONSTANTS.ARGUMENT_HAS_PALM_OIL);
 
 
 //Inflate the layout for this fragment

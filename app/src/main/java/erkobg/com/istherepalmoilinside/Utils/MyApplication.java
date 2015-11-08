@@ -3,7 +3,7 @@ package erkobg.com.istherepalmoilinside.Utils;
 import android.app.Application;
 import android.content.Context;
 
-public class MyApplication extends Application {
+class MyApplication extends Application {
     private static Context appContext;
 
     public static Context getContext() {
