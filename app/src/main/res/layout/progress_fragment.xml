@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
             android:textSize="14sp"
-            android:text="This is text" />
+            android:text="@string/empty" />
 
     </LinearLayout>
 </ScrollView>

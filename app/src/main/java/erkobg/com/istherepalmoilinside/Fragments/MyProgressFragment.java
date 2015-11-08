@@ -34,7 +34,7 @@ public class MyProgressFragment extends ProgressFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mContentView = inflater.inflate(R.layout.view_content, null);
+        mContentView = inflater.inflate(R.layout.progress_fragment, null);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -60,6 +60,6 @@ public class MyProgressFragment extends ProgressFragment {
         setContentShown(false);
 
         mHandler = new Handler();
-        mHandler.postDelayed(mShowContentRunnable, 3000);
+        mHandler.postDelayed(mShowContentRunnable, 8000);
     }
 }
