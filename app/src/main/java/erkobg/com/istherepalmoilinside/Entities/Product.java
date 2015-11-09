@@ -1,66 +1,55 @@
 package erkobg.com.istherepalmoilinside.Entities;
 
-import java.util.Date;
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 /**
- * Created by erkobg on 11/07/2015.
+ * Data model for a Products.
  */
-public class Product {
-    private String barcode;
-    private String name;
-    private String Description;
-    private boolean HasPalmOil;
-    private Date DateCreated;
+@ParseClassName("Products")
+public class Product extends ParseObject {
 
-    public Product() {
-    }
+  //barcode
+  public String getBarcode() {
+    return getString("barcode");
+  }
 
-    public Product(String barcode, String name, String Description, boolean HasPalmOil) {
-        this.barcode = barcode;
-        this.name = name;
-        this.Description = Description;
-        this.HasPalmOil = HasPalmOil;
-        this.DateCreated = new Date();
-    }
+  public void setBarcode(String value) {
+    put("barcode", value);
+  }
+
+  //name
+  public String getName() {
+    return getString("name");
+  }
+
+  public void setName(String value) {
+    put("name", value);
+  }
 
 
-    public String getBarcode() {
-        return barcode;
-    }
+  //description
+  public String getDescription() {
+    return getString("description");
+  }
 
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
-    }
+  public void setDescription(String value) {
+    put("description", value);
+  }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  //description
+  public Boolean getHasPalmOil() {
+    return getBoolean("haspalmoil");
+  }
 
-    public String getDescription() {
-        return Description;
-    }
+  public void setHasPalmOil(Boolean value) {
+    put("haspalmoil", value);
+  }
 
-    public void setDescription(String description) {
-        Description = description;
-    }
 
-    public boolean isHasPalmOil() {
-        return HasPalmOil;
-    }
-
-    public void setHasPalmOil(boolean hasPalmOil) {
-        HasPalmOil = hasPalmOil;
-    }
-
-    public Date getDateCreated() {
-        return DateCreated;
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        DateCreated = dateCreated;
-    }
+  public static ParseQuery<Product> getQuery() {
+    return ParseQuery.getQuery(Product.class);
+  }
 }

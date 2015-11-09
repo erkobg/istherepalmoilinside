@@ -12,8 +12,8 @@ import android.widget.TextView;
 import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.R;
 import erkobg.com.istherepalmoilinside.Utils.CONSTANTS;
-import erkobg.com.istherepalmoilinside.Utils.FirebaseHelper;
 import erkobg.com.istherepalmoilinside.Utils.MyBaseFragment;
+import erkobg.com.istherepalmoilinside.Utils.ParseHelper;
 
 public class NewProductFragment extends MyBaseFragment {
     public View onCreateView(LayoutInflater inflater,
@@ -60,10 +60,14 @@ public class NewProductFragment extends MyBaseFragment {
                 }
 
 
-                //second if everything is ok - add the Product
+                //second if everything is ok - add the OldProduct
                 try {
-                    FirebaseHelper tmp = FirebaseHelper.getInstance(null, null);
-                    Product new_product = new Product(l_barcodeText, l_name, l_description, HasPalmOil.isChecked());
+                    ParseHelper tmp = ParseHelper.getInstance(null, null);
+                    Product new_product = new Product();
+                    new_product.setBarcode(l_barcodeText);
+                    new_product.setName(l_name);
+                    new_product.setDescription(l_description);
+                    new_product.setHasPalmOil(HasPalmOil.isChecked());
                     tmp.CreateNewProduct(new_product);
                 } catch (Exception e) {
                     e.printStackTrace();

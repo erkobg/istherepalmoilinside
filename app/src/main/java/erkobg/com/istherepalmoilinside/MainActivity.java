@@ -18,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.firebase.client.Firebase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -30,7 +29,7 @@ import erkobg.com.istherepalmoilinside.Fragments.NewProductFragment;
 import erkobg.com.istherepalmoilinside.Fragments.ShowProductFragment;
 import erkobg.com.istherepalmoilinside.Interfaces.OnDataProcessListener;
 import erkobg.com.istherepalmoilinside.Utils.CONSTANTS;
-import erkobg.com.istherepalmoilinside.Utils.FirebaseHelper;
+import erkobg.com.istherepalmoilinside.Utils.ParseHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnDataProcessListener {
@@ -40,8 +39,6 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("MainActivity", "onCreate(Bundle savedInstanceState)");
         super.onCreate(savedInstanceState);
-        //Setup Firebase on Android!
-        Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -218,7 +215,7 @@ public class MainActivity extends AppCompatActivity
                 args2.putString(CONSTANTS.ARGUMENT_BAR_CODE, product.getBarcode());
                 args2.putString(CONSTANTS.ARGUMENT_NAME, product.getName());
                 args2.putString(CONSTANTS.ARGUMENT_DESCRIPTION, product.getDescription());
-                args2.putBoolean(CONSTANTS.ARGUMENT_HAS_PALM_OIL, product.isHasPalmOil());
+                args2.putBoolean(CONSTANTS.ARGUMENT_HAS_PALM_OIL, product.getHasPalmOil());
                 fragment.setArguments(args2);
                 viewIsAtHome = false;
                 break;
@@ -262,7 +259,7 @@ public class MainActivity extends AppCompatActivity
                 displayView(CONSTANTS.NAVIGATE_SHOW_PROGRESS);
                 //then query for progress
                 String scannedCode = result.getContents();
-                FirebaseHelper tmp = FirebaseHelper.getInstance(this, this);
+                ParseHelper tmp = ParseHelper.getInstance(this, this);
 
                 try {
                     tmp.CheckProduct(scannedCode);
