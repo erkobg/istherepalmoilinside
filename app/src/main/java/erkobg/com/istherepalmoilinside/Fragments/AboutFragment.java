@@ -14,7 +14,7 @@ public class AboutFragment extends MyBaseFragment {
                              ViewGroup container, Bundle savedInstanceState) {
         //Inflate the layout for this fragment
         return inflater.inflate(
-                R.layout.about_layout, container, false);
+                R.layout.about_fragment_layout, container, false);
     }
 
 

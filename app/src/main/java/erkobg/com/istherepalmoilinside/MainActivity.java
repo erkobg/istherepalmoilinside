@@ -24,6 +24,7 @@ import com.google.zxing.integration.android.IntentResult;
 import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.Fragments.AboutFragment;
 import erkobg.com.istherepalmoilinside.Fragments.HomeFragment;
+import erkobg.com.istherepalmoilinside.Fragments.ListFragment;
 import erkobg.com.istherepalmoilinside.Fragments.MyProgressFragment;
 import erkobg.com.istherepalmoilinside.Fragments.NewProductFragment;
 import erkobg.com.istherepalmoilinside.Fragments.ShowProductFragment;
@@ -174,10 +175,11 @@ public class MainActivity extends AppCompatActivity
                 callBarcodeIntent();
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
-                //no need to continue as this is another activity
+                //no_big need to continue as this is another activity
                 return;
             case R.id.nav_list:
                 title = getString(R.string.title_list);
+                fragment = new ListFragment();
                 viewIsAtHome = false;
                 break;
 

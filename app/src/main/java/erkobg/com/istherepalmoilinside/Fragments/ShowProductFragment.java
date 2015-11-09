@@ -40,9 +40,9 @@ public class ShowProductFragment extends MyBaseFragment {
 
         if (hasPalmOilBoolean) {
             HasPalmOil.setChecked(true);
-            imageView.setImageResource(R.drawable.yes);
+            imageView.setImageResource(R.drawable.yes_big);
         } else {
-            imageView.setImageResource(R.drawable.no);
+            imageView.setImageResource(R.drawable.no_big);
 
         }
 
