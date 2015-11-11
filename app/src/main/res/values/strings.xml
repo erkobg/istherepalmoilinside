@@ -29,6 +29,7 @@
     <string name="new_product_hasPalmoil">Има ли палмово масло?</string>
     <string name="new_product_addNewbtn">Добави нов продукт</string>
     <string name="empty">Няма данни</string>
+    <string name="loading">Зареждане</string>
     <string name="checking">Проверяваме....</string>
     <string name="mandat_barcode">Баркода е задължително поле!</string>
     <string name="mandat_name">Името е задължително поле!</string>

@@ -24,7 +24,7 @@ import com.google.zxing.integration.android.IntentResult;
 import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.Fragments.AboutFragment;
 import erkobg.com.istherepalmoilinside.Fragments.HomeFragment;
-import erkobg.com.istherepalmoilinside.Fragments.ListFragment;
+import erkobg.com.istherepalmoilinside.Fragments.ListProductsFragment;
 import erkobg.com.istherepalmoilinside.Fragments.MyProgressFragment;
 import erkobg.com.istherepalmoilinside.Fragments.NewProductFragment;
 import erkobg.com.istherepalmoilinside.Fragments.ShowProductFragment;
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity
                 return;
             case R.id.nav_list:
                 title = getString(R.string.title_list);
-                fragment = new ListFragment();
+                fragment = new ListProductsFragment();
                 viewIsAtHome = false;
                 break;
 

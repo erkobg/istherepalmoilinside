@@ -60,7 +60,7 @@ public class NewProductFragment extends MyBaseFragment {
                 }
 
 
-                //second if everything is ok - add the OldProduct
+                //second if everything is ok - add the Product
                 try {
                     ParseHelper tmp = ParseHelper.getInstance(null, null);
                     Product new_product = new Product();

@@ -10,15 +10,15 @@ import java.lang.reflect.Field;
  * Created by Erkobg on 11/07/2015.
  */
 public class MyBaseFragment extends Fragment {
-    @Override
+  /*  @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Retain this fragment across configuration changes.
-        setRetainInstance(true);
-    }
+      //  setRetainInstance(true);
+    }*/
 
-    @Override
+    /*@Override
     public void onDetach() {
         super.onDetach();
 
@@ -32,5 +32,5 @@ public class MyBaseFragment extends Fragment {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 }
