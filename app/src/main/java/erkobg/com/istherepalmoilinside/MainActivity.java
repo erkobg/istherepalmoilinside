@@ -35,7 +35,7 @@ import erkobg.com.istherepalmoilinside.Utils.ParseHelper;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnDataProcessListener {
     private boolean viewIsAtHome;
-
+    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("MainActivity", "onCreate(Bundle savedInstanceState)");
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout
@@ -170,22 +170,26 @@ public class MainActivity extends AppCompatActivity
                 fragment = new HomeFragment();
                 title = getString(R.string.title_home);
                 viewIsAtHome = true;
+                navigationView.setCheckedItem(viewId);
                 break;
             case R.id.nav_camera:
                 callBarcodeIntent();
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
                 //no_big need to continue as this is another activity
+                navigationView.setCheckedItem(R.id.nav_home);
                 return;
             case R.id.nav_list:
                 title = getString(R.string.title_list);
                 fragment = new ListProductsFragment();
                 viewIsAtHome = false;
+                navigationView.setCheckedItem(viewId);
                 break;
 
             case R.id.nav_more:
                 title = getString(R.string.title_more);
                 viewIsAtHome = false;
+                navigationView.setCheckedItem(viewId);
                 break;
 
 
@@ -193,11 +197,15 @@ public class MainActivity extends AppCompatActivity
                 fragment = new AboutFragment();
                 title = getString(R.string.title_about);
                 viewIsAtHome = false;
+
+                navigationView.setCheckedItem(viewId);
                 break;
             case CONSTANTS.NAVIGATE_SHOW_PROGRESS:
                 fragment = new MyProgressFragment();
                 title = getResources().getString(R.string.checking);
                 viewIsAtHome = false;
+
+                navigationView.setCheckedItem(R.id.nav_home);
                 break;
 
             case CONSTANTS.NAVIGATE_ADD_PRODUCT:
@@ -206,6 +214,7 @@ public class MainActivity extends AppCompatActivity
                 Bundle args = new Bundle();
                 args.putString(CONSTANTS.ARGUMENT_BAR_CODE, barCode);
                 fragment.setArguments(args);
+                navigationView.setCheckedItem(R.id.nav_home);
                 viewIsAtHome = false;
                 break;
 
@@ -219,18 +228,10 @@ public class MainActivity extends AppCompatActivity
                 args2.putString(CONSTANTS.ARGUMENT_DESCRIPTION, product.getDescription());
                 args2.putBoolean(CONSTANTS.ARGUMENT_HAS_PALM_OIL, product.getHasPalmOil());
                 fragment.setArguments(args2);
+                navigationView.setCheckedItem(R.id.nav_home);
                 viewIsAtHome = false;
                 break;
         }
-       /* FragmentManager fm = getFragmentManager();
-        mTaskFragment = (TaskFragment) fm.findFragmentByTag(TAG_TASK_FRAGMENT);
-
-        // If the Fragment is non-null, then it is currently being
-        // retained across a configuration change.
-        if (mTaskFragment == null) {
-            mTaskFragment = new TaskFragment();
-            fm.beginTransaction().add(mTaskFragment, TAG_TASK_FRAGMENT).commit();
-        }*/
 
 
         if (fragment != null) {

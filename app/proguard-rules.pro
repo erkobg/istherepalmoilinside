@@ -15,3 +15,14 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-dontwarn com.parse.ParseOkHttpClient**
+-keep class com.parse.ParseOkHttpClient** { *; }
+-dontwarn com.parse.ParseApacheHttpClient**
+-keep class com.parse.ParseApacheHttpClient** { *; }
+-dontwarn android.support.v4.**
+-dontwarn com.parse.NotificationCompat$NotificationCompatImplBase**
+-keep class com.parse.NotificationCompat$NotificationCompatImplBase** { *; }
+
+-keep public class * extends android.support.v7.widget.RecyclerView$LayoutManager {
+    public <init>(...);
+}
