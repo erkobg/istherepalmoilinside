@@ -11,4 +11,8 @@ public interface OnDataProcessListener {
 
     void onDataSubmitted();
 
+    void onUserCreated();
+
+    void onUserLogged();
+
 }

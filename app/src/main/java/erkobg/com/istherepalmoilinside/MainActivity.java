@@ -25,8 +25,10 @@ import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.Fragments.AboutFragment;
 import erkobg.com.istherepalmoilinside.Fragments.HomeFragment;
 import erkobg.com.istherepalmoilinside.Fragments.ListProductsFragment;
+import erkobg.com.istherepalmoilinside.Fragments.LoginUserFragment;
 import erkobg.com.istherepalmoilinside.Fragments.MyProgressFragment;
 import erkobg.com.istherepalmoilinside.Fragments.NewProductFragment;
+import erkobg.com.istherepalmoilinside.Fragments.RegisterUserFragment;
 import erkobg.com.istherepalmoilinside.Fragments.ShowProductFragment;
 import erkobg.com.istherepalmoilinside.Interfaces.OnDataProcessListener;
 import erkobg.com.istherepalmoilinside.Utils.CONSTANTS;
@@ -131,11 +133,11 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_login) {
+     /*   if (id == R.id.action_login) {
             //TODO: handle Login users
             Toast.makeText(this, R.string.login_message, Toast.LENGTH_LONG).show();
             return true;
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
@@ -186,9 +188,16 @@ public class MainActivity extends AppCompatActivity
                 navigationView.setCheckedItem(viewId);
                 break;
 
-            case R.id.nav_more:
-                title = getString(R.string.title_more);
+            case R.id.nav_register:
+                title = getString(R.string.sign_up_label);
                 viewIsAtHome = false;
+                fragment = new RegisterUserFragment();
+                navigationView.setCheckedItem(viewId);
+                break;
+            case R.id.nav_log_in:
+                title = getString(R.string.sign_in_label);
+                viewIsAtHome = false;
+                fragment = new LoginUserFragment();
                 navigationView.setCheckedItem(viewId);
                 break;
 
@@ -307,9 +316,22 @@ public class MainActivity extends AppCompatActivity
         displayView(R.id.nav_home);
     }
 
+    @Override
+    public void onUserCreated() {
+        Toast.makeText(this, R.string.user_registered, Toast.LENGTH_LONG).show();
+        displayView(R.id.nav_home);
+    }
+
+    @Override
+    public void onUserLogged() {
+        Toast.makeText(this, R.string.user_logged_in, Toast.LENGTH_LONG).show();
+        displayView(R.id.nav_home);
+    }
+
     private boolean isCameraAvailable() {
         PackageManager pm = getPackageManager();
         return pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
     }
+
 
 }
