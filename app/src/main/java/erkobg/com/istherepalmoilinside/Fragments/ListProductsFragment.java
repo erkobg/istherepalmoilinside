@@ -76,7 +76,7 @@ public class ListProductsFragment extends Fragment implements AdapterView.OnItem
     public void updateData() {
         progressBarFooter.setVisibility(View.VISIBLE);
 
-        ParseQuery<Product> query = ParseQuery.getQuery(Product.class);
+        ParseQuery<Product> query = ParseQuery.getQuery(Product.class).orderByAscending(Product.nameColumn);
         query.findInBackground(new FindCallback<Product>() {
 
             @Override

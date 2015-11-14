@@ -9,13 +9,15 @@ import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 
 
+import java.util.PriorityQueue;
+
 import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.Interfaces.OnDataProcessListener;
 
 
 public class ParseHelper {
     private static ParseHelper instance = null;
-    private final static String ProductsStr = "Products";
+    private final static String ProductsStr = Product.productClassName;
 
 
     private final OnDataProcessListener listener;
@@ -61,7 +63,7 @@ public class ParseHelper {
         // 1
         ParseQuery<Product> mapQuery = Product.getQuery();
         // 2
-        mapQuery.whereEqualTo("barcode", barcodeText);
+        mapQuery.whereEqualTo(Product.barcodeColumn, barcodeText);
 
         // 3
         mapQuery.getFirstInBackground(new GetCallback<Product>() {

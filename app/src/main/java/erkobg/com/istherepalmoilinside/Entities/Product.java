@@ -10,6 +10,11 @@ import com.parse.ParseQuery;
 @ParseClassName("Products")
 public class Product extends ParseObject {
 
+  public static String productClassName = "Products";
+  public static String barcodeColumn = "barcode";
+  public static String nameColumn = "name";
+  public static String descriptionColumn = "description";
+  public static String haspalmoilColumn = "haspalmoil";
   //barcode
   public String getBarcode() {
     return getString("barcode");
