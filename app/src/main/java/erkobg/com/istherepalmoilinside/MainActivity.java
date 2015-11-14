@@ -20,16 +20,19 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.parse.ParseException;
+
 
 import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.Fragments.AboutFragment;
 import erkobg.com.istherepalmoilinside.Fragments.HomeFragment;
 import erkobg.com.istherepalmoilinside.Fragments.ListProductsFragment;
-import erkobg.com.istherepalmoilinside.Fragments.LoginUserFragment;
+import erkobg.com.istherepalmoilinside.Fragments.User.LoginUserFragment;
 import erkobg.com.istherepalmoilinside.Fragments.MyProgressFragment;
 import erkobg.com.istherepalmoilinside.Fragments.NewProductFragment;
-import erkobg.com.istherepalmoilinside.Fragments.RegisterUserFragment;
+import erkobg.com.istherepalmoilinside.Fragments.User.RegisterUserFragment;
 import erkobg.com.istherepalmoilinside.Fragments.ShowProductFragment;
+import erkobg.com.istherepalmoilinside.Fragments.User.UserDetailsFragment;
 import erkobg.com.istherepalmoilinside.Interfaces.OnDataProcessListener;
 import erkobg.com.istherepalmoilinside.Utils.CONSTANTS;
 import erkobg.com.istherepalmoilinside.Utils.ParseHelper;
@@ -200,6 +203,12 @@ public class MainActivity extends AppCompatActivity
                 fragment = new LoginUserFragment();
                 navigationView.setCheckedItem(viewId);
                 break;
+            case R.id.nav_user_details:
+                title = getString(R.string.user_details_label);
+                viewIsAtHome = false;
+                fragment = new UserDetailsFragment();
+                navigationView.setCheckedItem(viewId);
+                break;
 
 
             case R.id.nav_about:
@@ -304,15 +313,19 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onDataCheckCancel() {
-        Log.d("onDataCheckCancel", "Error");
         Toast.makeText(this, R.string.canceled, Toast.LENGTH_LONG).show();
         displayView(R.id.nav_home);
     }
 
     @Override
-    public void onDataSubmitted() {
-        Log.d("onDataSubmitted", "Successfully Added");
+    public void onDataSubmittedSuccess() {
         Toast.makeText(this, R.string.product_added, Toast.LENGTH_LONG).show();
+        displayView(R.id.nav_home);
+    }
+
+    @Override
+    public void onDataSubmittedError(ParseException e) {
+        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         displayView(R.id.nav_home);
     }
 

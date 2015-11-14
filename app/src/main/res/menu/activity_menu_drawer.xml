@@ -19,6 +19,10 @@
             android:id="@+id/nav_log_in"
             android:icon="@android:drawable/ic_menu_manage"
             android:title="@string/menu_log_in" />
+        <item
+            android:id="@+id/nav_user_details"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="@string/menu_user_details" />
 
         <item android:id="@+id/nav_about" android:icon="@android:drawable/ic_menu_info_details"
             android:title="@string/menu_about" />

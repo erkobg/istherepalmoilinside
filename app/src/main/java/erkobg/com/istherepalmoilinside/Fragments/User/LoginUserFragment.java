@@ -1,4 +1,4 @@
-package erkobg.com.istherepalmoilinside.Fragments;
+package erkobg.com.istherepalmoilinside.Fragments.User;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 import erkobg.com.istherepalmoilinside.Interfaces.OnDataProcessListener;
 import erkobg.com.istherepalmoilinside.MainActivity;
@@ -30,7 +29,7 @@ public class LoginUserFragment extends MyBaseFragment implements View.OnClickLis
 
 //Inflate the layout for this fragment
         View v = inflater.inflate(
-                R.layout.login_fragment, container, false);
+                R.layout.login_user_fragment, container, false);
 
 
         mUsernameField = (EditText) v.findViewById(R.id.register_username);

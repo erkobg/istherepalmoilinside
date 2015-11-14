@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:focusable="false"
+            android:clickable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:text=""
+                android:id="@+id/register_username"
+                android:layout_width="fill_parent"
+                android:hint="@string/username"
+                android:inputType="text"
+                android:focusable="false"
+                android:editable="false"
+                android:layout_height="wrap_content">
+
+                <requestFocus />
+            </EditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+
+            android:focusable="false"
+            android:clickable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:text=""
+                android:id="@+id/register_email"
+                android:layout_width="fill_parent"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:focusable="false"
+                android:editable="false"
+                android:layout_height="wrap_content">
+
+                <requestFocus />
+            </EditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="false">
+
+            <EditText
+                android:text=""
+                android:id="@+id/created_at"
+                android:layout_width="fill_parent"
+                android:hint="@string/createdat"
+                android:inputType="text"
+                android:focusable="false"
+                android:editable="false"
+                android:layout_height="wrap_content">
+
+                <requestFocus />
+            </EditText>
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+</LinearLayout>

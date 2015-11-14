@@ -1,4 +1,4 @@
-package erkobg.com.istherepalmoilinside.Fragments;
+package erkobg.com.istherepalmoilinside.Fragments.User;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,7 +30,7 @@ public class RegisterUserFragment extends MyBaseFragment implements View.OnClick
 
 //Inflate the layout for this fragment
         View v = inflater.inflate(
-                R.layout.register_fragment, container, false);
+                R.layout.register_user_fragment, container, false);
 
 
         mUsernameField = (EditText) v.findViewById(R.id.register_username);

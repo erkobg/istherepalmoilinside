@@ -15,42 +15,43 @@ public class Product extends ParseObject {
   public static String nameColumn = "name";
   public static String descriptionColumn = "description";
   public static String haspalmoilColumn = "haspalmoil";
+  public static String usernameColumn = "username";
   //barcode
   public String getBarcode() {
-    return getString("barcode");
+    return getString(barcodeColumn);
   }
 
   public void setBarcode(String value) {
-    put("barcode", value);
+    put(barcodeColumn, value);
   }
 
   //name
   public String getName() {
-    return getString("name");
+    return getString(nameColumn);
   }
 
   public void setName(String value) {
-    put("name", value);
+    put(nameColumn, value);
   }
 
 
   //description
   public String getDescription() {
-    return getString("description");
+    return getString(descriptionColumn);
   }
 
   public void setDescription(String value) {
-    put("description", value);
+    put(descriptionColumn, value);
   }
 
 
   //description
   public Boolean getHasPalmOil() {
-    return getBoolean("haspalmoil");
+    return getBoolean(haspalmoilColumn);
   }
 
   public void setHasPalmOil(Boolean value) {
-    put("haspalmoil", value);
+    put(haspalmoilColumn, value);
   }
 
 

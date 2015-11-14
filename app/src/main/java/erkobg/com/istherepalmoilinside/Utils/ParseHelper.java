@@ -6,10 +6,10 @@ import com.parse.GetCallback;
 import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseRelation;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-
-import java.util.PriorityQueue;
 
 import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.Interfaces.OnDataProcessListener;
@@ -48,11 +48,23 @@ public class ParseHelper {
         acl.setPublicReadAccess(true);
         new_product.setACL(acl);
 
+        //2 Add the user who is creating the record
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        ParseRelation relation = new_product.getRelation(Product.usernameColumn);
+        relation.add(currentUser);
+        //new_product.put(Product.usernameColumn, ParseUser.getCurrentUser());
+
         // 2
         new_product.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                listener.onDataSubmitted();
+                if (e == null) {
+                    listener.onDataSubmittedSuccess();
+                } else {
+
+                    listener.onDataSubmittedError(e);
+                }
+
             }
         });
 
