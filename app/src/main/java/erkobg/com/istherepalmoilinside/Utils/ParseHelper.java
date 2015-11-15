@@ -10,16 +10,13 @@ import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-
 import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.Interfaces.OnDataProcessListener;
 
 
 public class ParseHelper {
-    private static ParseHelper instance = null;
     private final static String ProductsStr = Product.productClassName;
-
-
+    private static ParseHelper instance = null;
     private final OnDataProcessListener listener;
 
     private ParseHelper(Context context, OnDataProcessListener plistener) {
@@ -52,7 +49,6 @@ public class ParseHelper {
         ParseUser currentUser = ParseUser.getCurrentUser();
         ParseRelation relation = new_product.getRelation(Product.usernameColumn);
         relation.add(currentUser);
-        //new_product.put(Product.usernameColumn, ParseUser.getCurrentUser());
 
         // 2
         new_product.saveInBackground(new SaveCallback() {
@@ -62,7 +58,7 @@ public class ParseHelper {
                     listener.onDataSubmittedSuccess();
                 } else {
 
-                    listener.onDataSubmittedError(e);
+                    listener.onDataSubmittedError(e.getMessage());
                 }
 
             }

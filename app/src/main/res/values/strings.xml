@@ -64,5 +64,7 @@
     <string name="email_missing">Sorry, you must supply a email to register.</string>
     <string name="user_registered">Потребителя е създаден успешно!</string>
     <string name="user_logged_in">Влязохте успешно!</string>
+    <string name="user_logged_out">Излязохте успешно!</string>
     <string name="credential_invalid">Sorry, those credentials were invalid.</string>
+    <string name="logout">Излез</string>
 </resources>

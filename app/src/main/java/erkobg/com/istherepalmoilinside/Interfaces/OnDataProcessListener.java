@@ -1,8 +1,6 @@
 package erkobg.com.istherepalmoilinside.Interfaces;
 
 
-import com.parse.ParseException;
-
 import erkobg.com.istherepalmoilinside.Entities.Product;
 
 public interface OnDataProcessListener {
@@ -14,10 +12,12 @@ public interface OnDataProcessListener {
 
     void onDataSubmittedSuccess();
 
-    void onDataSubmittedError(ParseException e);
+    void onDataSubmittedError(String error);
 
     void onUserCreated();
 
     void onUserLogged();
+
+    void onUserLoggedOut();
 
 }

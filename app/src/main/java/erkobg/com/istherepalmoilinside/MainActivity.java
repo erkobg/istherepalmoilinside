@@ -4,34 +4,33 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.parse.ParseException;
-
+import com.parse.ParseUser;
 
 import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.Fragments.AboutFragment;
 import erkobg.com.istherepalmoilinside.Fragments.HomeFragment;
 import erkobg.com.istherepalmoilinside.Fragments.ListProductsFragment;
-import erkobg.com.istherepalmoilinside.Fragments.User.LoginUserFragment;
 import erkobg.com.istherepalmoilinside.Fragments.MyProgressFragment;
 import erkobg.com.istherepalmoilinside.Fragments.NewProductFragment;
-import erkobg.com.istherepalmoilinside.Fragments.User.RegisterUserFragment;
 import erkobg.com.istherepalmoilinside.Fragments.ShowProductFragment;
+import erkobg.com.istherepalmoilinside.Fragments.User.LoginUserFragment;
+import erkobg.com.istherepalmoilinside.Fragments.User.RegisterUserFragment;
 import erkobg.com.istherepalmoilinside.Fragments.User.UserDetailsFragment;
 import erkobg.com.istherepalmoilinside.Interfaces.OnDataProcessListener;
 import erkobg.com.istherepalmoilinside.Utils.CONSTANTS;
@@ -40,7 +39,8 @@ import erkobg.com.istherepalmoilinside.Utils.ParseHelper;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnDataProcessListener {
     private boolean viewIsAtHome;
-    private NavigationView navigationView;
+    private NavigationView mNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("MainActivity", "onCreate(Bundle savedInstanceState)");
@@ -65,8 +65,17 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
+        Menu menuNav = mNavigationView.getMenu();
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+
+            menuNav.findItem(R.id.nav_log_in).setVisible(false);
+            menuNav.findItem(R.id.nav_register).setVisible(false);
+        } else {
+            menuNav.findItem(R.id.nav_user_details).setVisible(false);
+        }
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout
         if (findViewById(R.id.fragment_container) != null) {
@@ -175,39 +184,39 @@ public class MainActivity extends AppCompatActivity
                 fragment = new HomeFragment();
                 title = getString(R.string.title_home);
                 viewIsAtHome = true;
-                navigationView.setCheckedItem(viewId);
+                mNavigationView.setCheckedItem(viewId);
                 break;
             case R.id.nav_camera:
                 callBarcodeIntent();
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
                 //no_big need to continue as this is another activity
-                navigationView.setCheckedItem(R.id.nav_home);
+                mNavigationView.setCheckedItem(R.id.nav_home);
                 return;
             case R.id.nav_list:
                 title = getString(R.string.title_list);
                 fragment = new ListProductsFragment();
                 viewIsAtHome = false;
-                navigationView.setCheckedItem(viewId);
+                mNavigationView.setCheckedItem(viewId);
                 break;
 
             case R.id.nav_register:
                 title = getString(R.string.sign_up_label);
                 viewIsAtHome = false;
                 fragment = new RegisterUserFragment();
-                navigationView.setCheckedItem(viewId);
+                mNavigationView.setCheckedItem(viewId);
                 break;
             case R.id.nav_log_in:
                 title = getString(R.string.sign_in_label);
                 viewIsAtHome = false;
                 fragment = new LoginUserFragment();
-                navigationView.setCheckedItem(viewId);
+                mNavigationView.setCheckedItem(viewId);
                 break;
             case R.id.nav_user_details:
                 title = getString(R.string.user_details_label);
                 viewIsAtHome = false;
                 fragment = new UserDetailsFragment();
-                navigationView.setCheckedItem(viewId);
+                mNavigationView.setCheckedItem(viewId);
                 break;
 
 
@@ -216,14 +225,14 @@ public class MainActivity extends AppCompatActivity
                 title = getString(R.string.title_about);
                 viewIsAtHome = false;
 
-                navigationView.setCheckedItem(viewId);
+                mNavigationView.setCheckedItem(viewId);
                 break;
             case CONSTANTS.NAVIGATE_SHOW_PROGRESS:
                 fragment = new MyProgressFragment();
                 title = getResources().getString(R.string.checking);
                 viewIsAtHome = false;
 
-                navigationView.setCheckedItem(R.id.nav_home);
+                mNavigationView.setCheckedItem(R.id.nav_home);
                 break;
 
             case CONSTANTS.NAVIGATE_ADD_PRODUCT:
@@ -232,7 +241,7 @@ public class MainActivity extends AppCompatActivity
                 Bundle args = new Bundle();
                 args.putString(CONSTANTS.ARGUMENT_BAR_CODE, barCode);
                 fragment.setArguments(args);
-                navigationView.setCheckedItem(R.id.nav_home);
+                mNavigationView.setCheckedItem(R.id.nav_home);
                 viewIsAtHome = false;
                 break;
 
@@ -246,7 +255,7 @@ public class MainActivity extends AppCompatActivity
                 args2.putString(CONSTANTS.ARGUMENT_DESCRIPTION, product.getDescription());
                 args2.putBoolean(CONSTANTS.ARGUMENT_HAS_PALM_OIL, product.getHasPalmOil());
                 fragment.setArguments(args2);
-                navigationView.setCheckedItem(R.id.nav_home);
+                mNavigationView.setCheckedItem(R.id.nav_home);
                 viewIsAtHome = false;
                 break;
         }
@@ -324,8 +333,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onDataSubmittedError(ParseException e) {
-        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+    public void onDataSubmittedError(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
         displayView(R.id.nav_home);
     }
 
@@ -337,7 +346,21 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onUserLogged() {
+        Menu menuNav = mNavigationView.getMenu();
+        menuNav.findItem(R.id.nav_log_in).setVisible(false);
+        menuNav.findItem(R.id.nav_register).setVisible(false);
+        menuNav.findItem(R.id.nav_user_details).setVisible(true);
         Toast.makeText(this, R.string.user_logged_in, Toast.LENGTH_LONG).show();
+        displayView(R.id.nav_home);
+    }
+
+    @Override
+    public void onUserLoggedOut() {
+        Menu menuNav = mNavigationView.getMenu();
+        menuNav.findItem(R.id.nav_user_details).setVisible(false);
+        menuNav.findItem(R.id.nav_log_in).setVisible(true);
+        menuNav.findItem(R.id.nav_register).setVisible(true);
+        Toast.makeText(this, R.string.user_logged_out, Toast.LENGTH_LONG).show();
         displayView(R.id.nav_home);
     }
 
