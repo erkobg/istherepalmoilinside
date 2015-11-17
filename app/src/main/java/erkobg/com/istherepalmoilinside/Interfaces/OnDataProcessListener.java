@@ -4,9 +4,11 @@ package erkobg.com.istherepalmoilinside.Interfaces;
 import erkobg.com.istherepalmoilinside.Entities.Product;
 
 public interface OnDataProcessListener {
-    void onProductCheckCompletedSuccess(Product oldProduct);
+    void onProductCheckCompletedSuccess(Product product);
 
-    void onProductCheckCompletedFail(String barcode);
+    void onProductSelected(Product product);
+
+    void onProductCheckCompletedFail(String barcode, String barcodeformat);
 
     void onDataCheckCancel();
 

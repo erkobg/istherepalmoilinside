@@ -8,7 +8,9 @@
             android:title="@string/menu_main" />
         <item android:id="@+id/nav_camera" android:icon="@android:drawable/ic_menu_camera"
             android:title="@string/menu_camera" />
-        <item android:id="@+id/nav_list" android:icon="@drawable/list"
+        <item
+            android:id="@+id/nav_product_list"
+            android:icon="@drawable/list"
             android:title="@string/menu_list" />
 
         <item

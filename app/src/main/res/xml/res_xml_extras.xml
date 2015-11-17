@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extras xmlns:android="http://schemas.android.com/apk/res/android">
+    <extra
+        android:name="380"
+        android:value="България (Bulgaria)" />
+    <extra
+        android:name="383"
+        android:value="Словения (Slovenia)" />
+    <extra
+        android:name="385"
+        android:value="Хърватска (Croatia)" />
+    <extra
+        android:name="387"
+        android:value="Босна и Херцеговина (Bosnia and Herzegovina)" />
+    <extra
+        android:name="400"
+        android:value="бивша Източна Германия" />
+    <extra
+        android:name="401"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="402"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="403"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="404"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="405"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="406"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="407"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="408"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="409"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="410"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="411"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="412"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="413"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="414"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="415"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="416"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="417"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="418"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="419"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="420"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="421"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="422"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="423"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="424"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="425"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="426"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="427"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="428"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="429"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="430"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="431"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="432"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="433"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="434"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="435"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="436"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="437"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="438"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="439"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="440"
+        android:value="Германия (Germany)" />
+    <extra
+        android:name="450"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="451"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="452"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="453"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="454"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="455"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="456"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="457"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="458"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="459"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="460"
+        android:value="Русия(Russia)" />
+    <extra
+        android:name="461"
+        android:value="Русия(Russia)" />
+    <extra
+        android:name="462"
+        android:value="Русия(Russia)" />
+    <extra
+        android:name="463"
+        android:value="Русия(Russia)" />
+    <extra
+        android:name="464"
+        android:value="Русия(Russia)" />
+    <extra
+        android:name="465"
+        android:value="Русия(Russia)" />
+    <extra
+        android:name="466"
+        android:value="Русия(Russia)" />
+    <extra
+        android:name="467"
+        android:value="Русия(Russia)" />
+    <extra
+        android:name="468"
+        android:value="Русия(Russia)" />
+    <extra
+        android:name="469"
+        android:value="Русия(Russia)" />
+    <extra
+        android:name="470"
+        android:value="Киргизстан (Kyrgyzstan)" />
+    <extra
+        android:name="471"
+        android:value="Тайван (Taiwan)" />
+    <extra
+        android:name="474"
+        android:value="Естония (Estonia)" />
+    <extra
+        android:name="475"
+        android:value="Латвия (Latvia)" />
+    <extra
+        android:name="476"
+        android:value="Азербайджан (Azerbaijan)" />
+    <extra
+        android:name="477"
+        android:value="Литва (Lithuania)" />
+    <extra
+        android:name="478"
+        android:value="Узбекистан (Uzbekistan)" />
+    <extra
+        android:name="479"
+        android:value="Шри Ланка ( Sri Lanka)" />
+    <extra
+        android:name="480"
+        android:value="Филипини (Philippines)" />
+    <extra
+        android:name="481"
+        android:value="Беларус (Belarus)" />
+    <extra
+        android:name="482"
+        android:value="Украйна (Ukraine)" />
+    <extra
+        android:name="484"
+        android:value="Молдова (Moldova)" />
+    <extra
+        android:name="485"
+        android:value="Армения (Armenia)" />
+    <extra
+        android:name="486"
+        android:value="Грузия (Georgia)" />
+    <extra
+        android:name="487"
+        android:value="Казахстан (Kazakhstan)" />
+    <extra
+        android:name="489"
+        android:value="Хонг Конг (Hong Kong SAR)" />
+    <extra
+        android:name="490"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="491"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="492"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="493"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="494"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="495"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="496"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="497"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="498"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="499"
+        android:value="Япония (Japan)" />
+    <extra
+        android:name="500"
+        android:value="Великобритания (United Kingdom)" />
+    <extra
+        android:name="501"
+        android:value="Великобритания (United Kingdom)" />
+    <extra
+        android:name="502"
+        android:value="Великобритания (United Kingdom)" />
+    <extra
+        android:name="503"
+        android:value="Великобритания (United Kingdom)" />
+    <extra
+        android:name="504"
+        android:value="Великобритания (United Kingdom)" />
+    <extra
+        android:name="505"
+        android:value="Великобритания (United Kingdom)" />
+    <extra
+        android:name="506"
+        android:value="Великобритания (United Kingdom)" />
+    <extra
+        android:name="507"
+        android:value="Великобритания (United Kingdom)" />
+    <extra
+        android:name="508"
+        android:value="Великобритания (United Kingdom)" />
+    <extra
+        android:name="509"
+        android:value="Великобритания (United Kingdom)" />
+    <extra
+        android:name="520"
+        android:value="Гърция (Greece)" />
+    <extra
+        android:name="528"
+        android:value="Ливан (Lebanon)" />
+    <extra
+        android:name="529"
+        android:value="Кипър (Cyprus)" />
+    <extra
+        android:name="530"
+        android:value="Албания (Albania)" />
+    <extra
+        android:name="531"
+        android:value="Македония (Macedonia)" />
+    <extra
+        android:name="535"
+        android:value="Малта (Malta)" />
+    <extra
+        android:name="539"
+        android:value="Ирландия (Republic of Ireland)" />
+    <extra
+        android:name="540"
+        android:value="Белгия и Люксембург ( Belgium and Luxembourg)" />
+    <extra
+        android:name="541"
+        android:value="Белгия и Люксембург ( Belgium and Luxembourg)" />
+    <extra
+        android:name="542"
+        android:value="Белгия и Люксембург ( Belgium and Luxembourg)" />
+    <extra
+        android:name="543"
+        android:value="Белгия и Люксембург ( Belgium and Luxembourg)" />
+    <extra
+        android:name="544"
+        android:value="Белгия и Люксембург ( Belgium and Luxembourg)" />
+    <extra
+        android:name="545"
+        android:value="Белгия и Люксембург ( Belgium and Luxembourg)" />
+    <extra
+        android:name="546"
+        android:value="Белгия и Люксембург ( Belgium and Luxembourg)" />
+    <extra
+        android:name="547"
+        android:value="Белгия и Люксембург ( Belgium and Luxembourg)" />
+    <extra
+        android:name="548"
+        android:value="Белгия и Люксембург ( Belgium and Luxembourg)" />
+    <extra
+        android:name="549"
+        android:value="Белгия и Люксембург ( Belgium and Luxembourg)" />
+    <extra
+        android:name="560"
+        android:value="Португалия (Portugal)" />
+    <extra
+        android:name="569"
+        android:value="Исландия (Iceland)" />
+    <extra
+        android:name="570"
+        android:value="Дания, Фаръорски острови и Гренландия (Denmark, Faroe Islands and Greenland)" />
+    <extra
+        android:name="571"
+        android:value="Дания, Фаръорски острови и Гренландия (Denmark, Faroe Islands and Greenland)" />
+    <extra
+        android:name="572"
+        android:value="Дания, Фаръорски острови и Гренландия (Denmark, Faroe Islands and Greenland)" />
+    <extra
+        android:name="573"
+        android:value="Дания, Фаръорски острови и Гренландия (Denmark, Faroe Islands and Greenland)" />
+    <extra
+        android:name="574"
+        android:value="Дания, Фаръорски острови и Гренландия (Denmark, Faroe Islands and Greenland)" />
+    <extra
+        android:name="575"
+        android:value="Дания, Фаръорски острови и Гренландия (Denmark, Faroe Islands and Greenland)" />
+    <extra
+        android:name="576"
+        android:value="Дания, Фаръорски острови и Гренландия (Denmark, Faroe Islands and Greenland)" />
+    <extra
+        android:name="577"
+        android:value="Дания, Фаръорски острови и Гренландия (Denmark, Faroe Islands and Greenland)" />
+    <extra
+        android:name="578"
+        android:value="Дания, Фаръорски острови и Гренландия (Denmark, Faroe Islands and Greenland)" />
+    <extra
+        android:name="579"
+        android:value="Дания, Фаръорски острови и Гренландия (Denmark, Faroe Islands and Greenland)" />
+    <extra
+        android:name="590"
+        android:value="Полша (Poland)" />
+    <extra
+        android:name="594"
+        android:value="Румъния (Romania)" />
+    <extra
+        android:name="599"
+        android:value="Унгария (Hungary)" />
+    <extra
+        android:name="600"
+        android:value="ЮАР (South Africa)" />
+    <extra
+        android:name="601"
+        android:value="ЮАР (South Africa)" />
+    <extra
+        android:name="603"
+        android:value="Гана (Ghana)" />
+    <extra
+        android:name="608"
+        android:value="Бахрейн (Bahrain)" />
+    <extra
+        android:name="609"
+        android:value="о. Мавриций (Mauritius)" />
+    <extra
+        android:name="611"
+        android:value="Мароко (Morocco)" />
+    <extra
+        android:name="613"
+        android:value="Алжир (Algeria)" />
+    <extra
+        android:name="616"
+        android:value="Кения (Kenya)" />
+    <extra
+        android:name="618"
+        android:value="Кот Д?Ивоар ( C?te d?Ivoire)" />
+    <extra
+        android:name="619"
+        android:value="Тунис (Tunisia)" />
+    <extra
+        android:name="621"
+        android:value="Сирия (Syria)" />
+    <extra
+        android:name="622"
+        android:value="Египет (Egypt)" />
+    <extra
+        android:name="624"
+        android:value="Либия (Libya)" />
+    <extra
+        android:name="625"
+        android:value="Йордания (Jordan)" />
+    <extra
+        android:name="626"
+        android:value="Иран (Iran)" />
+    <extra
+        android:name="627"
+        android:value="Кувейт (Kuwait)" />
+    <extra
+        android:name="628"
+        android:value="Саудитска Арабия (Saudi Arabia)" />
+    <extra
+        android:name="629"
+        android:value="Обединени Арабски Емирства (United Arab Emirates)" />
+    <extra
+        android:name="640"
+        android:value="Финландия (Finland)" />
+    <extra
+        android:name="641"
+        android:value="Финландия (Finland)" />
+    <extra
+        android:name="642"
+        android:value="Финландия (Finland)" />
+    <extra
+        android:name="643"
+        android:value="Финландия (Finland)" />
+    <extra
+        android:name="644"
+        android:value="Финландия (Finland)" />
+    <extra
+        android:name="645"
+        android:value="Финландия (Finland)" />
+    <extra
+        android:name="646"
+        android:value="Финландия (Finland)" />
+    <extra
+        android:name="647"
+        android:value="Финландия (Finland)" />
+    <extra
+        android:name="648"
+        android:value="Финландия (Finland)" />
+    <extra
+        android:name="649"
+        android:value="Финландия (Finland)" />
+    <extra
+        android:name="690"
+        android:value="Китай (People?s Republic of China)" />
+    <extra
+        android:name="691"
+        android:value="Китай (People?s Republic of China)" />
+    <extra
+        android:name="692"
+        android:value="Китай (People?s Republic of China)" />
+    <extra
+        android:name="693"
+        android:value="Китай (People?s Republic of China)" />
+    <extra
+        android:name="694"
+        android:value="Китай (People?s Republic of China)" />
+    <extra
+        android:name="695"
+        android:value="Китай (People?s Republic of China)" />
+    <extra
+        android:name="700"
+        android:value="Норвегия(Norway)" />
+    <extra
+        android:name="701"
+        android:value="Норвегия(Norway)" />
+    <extra
+        android:name="702"
+        android:value="Норвегия(Norway)" />
+    <extra
+        android:name="703"
+        android:value="Норвегия(Norway)" />
+    <extra
+        android:name="704"
+        android:value="Норвегия(Norway)" />
+    <extra
+        android:name="705"
+        android:value="Норвегия(Norway)" />
+    <extra
+        android:name="706"
+        android:value="Норвегия(Norway)" />
+    <extra
+        android:name="707"
+        android:value="Норвегия(Norway)" />
+    <extra
+        android:name="708"
+        android:value="Норвегия(Norway)" />
+    <extra
+        android:name="709"
+        android:value="Норвегия(Norway)" />
+    <extra
+        android:name="729"
+        android:value="Израел (Israel)" />
+    <extra
+        android:name="730"
+        android:value="Швеция (Sweden)" />
+    <extra
+        android:name="731"
+        android:value="Швеция (Sweden)" />
+    <extra
+        android:name="732"
+        android:value="Швеция (Sweden)" />
+    <extra
+        android:name="733"
+        android:value="Швеция (Sweden)" />
+    <extra
+        android:name="734"
+        android:value="Швеция (Sweden)" />
+    <extra
+        android:name="735"
+        android:value="Швеция (Sweden)" />
+    <extra
+        android:name="736"
+        android:value="Швеция (Sweden)" />
+    <extra
+        android:name="737"
+        android:value="Швеция (Sweden)" />
+    <extra
+        android:name="738"
+        android:value="Швеция (Sweden)" />
+    <extra
+        android:name="739"
+        android:value="Швеция (Sweden)" />
+    <extra
+        android:name="740"
+        android:value="Гватемала (Guatemala)" />
+    <extra
+        android:name="741"
+        android:value="Ел Салвадор (El Salvador)" />
+    <extra
+        android:name="743"
+        android:value="Никарагуа (Nicaragua)" />
+    <extra
+        android:name="744"
+        android:value="Коста Рика ( Costa Rica)" />
+    <extra
+        android:name="745"
+        android:value="Панама (Panama)" />
+    <extra
+        android:name="746"
+        android:value="Доминиканска република(Dominican Republic)" />
+    <extra
+        android:name="750"
+        android:value="Мексико(Mexico)" />
+    <extra
+        android:name="754"
+        android:value="Канада (Canada)" />
+    <extra
+        android:name="755"
+        android:value="Канада (Canada)" />
+    <extra
+        android:name="759"
+        android:value="Венецуела (Venezuela)" />
+    <extra
+        android:name="760"
+        android:value="Швейцария и Лихтенщайн (Switzerland and Liechtenstein)" />
+    <extra
+        android:name="761"
+        android:value="Швейцария и Лихтенщайн (Switzerland and Liechtenstein)" />
+    <extra
+        android:name="762"
+        android:value="Швейцария и Лихтенщайн (Switzerland and Liechtenstein)" />
+    <extra
+        android:name="763"
+        android:value="Швейцария и Лихтенщайн (Switzerland and Liechtenstein)" />
+    <extra
+        android:name="764"
+        android:value="Швейцария и Лихтенщайн (Switzerland and Liechtenstein)" />
+    <extra
+        android:name="765"
+        android:value="Швейцария и Лихтенщайн (Switzerland and Liechtenstein)" />
+    <extra
+        android:name="766"
+        android:value="Швейцария и Лихтенщайн (Switzerland and Liechtenstein)" />
+    <extra
+        android:name="767"
+        android:value="Швейцария и Лихтенщайн (Switzerland and Liechtenstein)" />
+    <extra
+        android:name="768"
+        android:value="Швейцария и Лихтенщайн (Switzerland and Liechtenstein)" />
+    <extra
+        android:name="769"
+        android:value="Швейцария и Лихтенщайн (Switzerland and Liechtenstein)" />
+    <extra
+        android:name="770"
+        android:value="Колумбия (Colombia)" />
+    <extra
+        android:name="773"
+        android:value="Уругвай (Uruguay)" />
+    <extra
+        android:name="775"
+        android:value="Перу (Peru)" />
+    <extra
+        android:name="777"
+        android:value="Боливия (Bolivia)" />
+    <extra
+        android:name="779"
+        android:value="Аржентина (Argentina)" />
+    <extra
+        android:name="780"
+        android:value="Чили (Chile)" />
+    <extra
+        android:name="784"
+        android:value="Парагвай (Paraguay)" />
+    <extra
+        android:name="785"
+        android:value="Перу (Peru)" />
+    <extra
+        android:name="786"
+        android:value="Еквадор (Ecuador)" />
+    <extra
+        android:name="789"
+        android:value="Бразилия (Brazil)" />
+    <extra
+        android:name="790"
+        android:value="Бразилия (Brazil)" />
+    <extra
+        android:name="800"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="801"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="802"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="803"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="804"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="805"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="806"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="807"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="808"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="809"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="810"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="811"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="812"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="813"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="814"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="815"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="816"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="817"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="818"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="819"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="820"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="821"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="822"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="823"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="824"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="825"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="826"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="827"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="828"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="829"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="830"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="831"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="832"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="833"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="834"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="835"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="836"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="837"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="838"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="839"
+        android:value="Италия, Сан Марино и Ватикан (Italy, San Marino and Vatican City)" />
+    <extra
+        android:name="840"
+        android:value="Испания и Андора (Spain and Andorra)" />
+    <extra
+        android:name="841"
+        android:value="Испания и Андора (Spain and Andorra)" />
+    <extra
+        android:name="842"
+        android:value="Испания и Андора (Spain and Andorra)" />
+    <extra
+        android:name="843"
+        android:value="Испания и Андора (Spain and Andorra)" />
+    <extra
+        android:name="844"
+        android:value="Испания и Андора (Spain and Andorra)" />
+    <extra
+        android:name="845"
+        android:value="Испания и Андора (Spain and Andorra)" />
+    <extra
+        android:name="846"
+        android:value="Испания и Андора (Spain and Andorra)" />
+    <extra
+        android:name="847"
+        android:value="Испания и Андора (Spain and Andorra)" />
+    <extra
+        android:name="848"
+        android:value="Испания и Андора (Spain and Andorra)" />
+    <extra
+        android:name="849"
+        android:value="Испания и Андора (Spain and Andorra)" />
+    <extra
+        android:name="850"
+        android:value="Куба (Cuba)" />
+    <extra
+        android:name="858"
+        android:value="Словакия (Slovakia)" />
+    <extra
+        android:name="859"
+        android:value="Чехия (Czech Republic)" />
+    <extra
+        android:name="860"
+        android:value="Сърбия и Черна Гора(Serbia and Montenegro)" />
+    <extra
+        android:name="865"
+        android:value="Монголия (Mongolia)" />
+    <extra
+        android:name="867"
+        android:value="Северна (North Korea)" />
+    <extra
+        android:name="869"
+        android:value="Турция (Turkey)" />
+    <extra
+        android:name="870"
+        android:value="Холандия (Netherlands)" />
+    <extra
+        android:name="871"
+        android:value="Холандия (Netherlands)" />
+    <extra
+        android:name="872"
+        android:value="Холандия (Netherlands)" />
+    <extra
+        android:name="873"
+        android:value="Холандия (Netherlands)" />
+    <extra
+        android:name="874"
+        android:value="Холандия (Netherlands)" />
+    <extra
+        android:name="875"
+        android:value="Холандия (Netherlands)" />
+    <extra
+        android:name="876"
+        android:value="Холандия (Netherlands)" />
+    <extra
+        android:name="877"
+        android:value="Холандия (Netherlands)" />
+    <extra
+        android:name="878"
+        android:value="Холандия (Netherlands)" />
+    <extra
+        android:name="879"
+        android:value="Холандия (Netherlands)" />
+    <extra
+        android:name="880"
+        android:value="Южна Корея (South Korea)" />
+    <extra
+        android:name="884"
+        android:value="Камбоджа (Cambodia)" />
+    <extra
+        android:name="885"
+        android:value="Тайланд (Thailand)" />
+    <extra
+        android:name="888"
+        android:value="Сингапур (Singapore)" />
+    <extra
+        android:name="890"
+        android:value="Индия (India)" />
+    <extra
+        android:name="893"
+        android:value="Виетнам (Vietnam)" />
+    <extra
+        android:name="899"
+        android:value="Индонезия (Indonesia)" />
+    <extra
+        android:name="900"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="901"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="902"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="903"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="904"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="905"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="906"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="907"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="908"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="909"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="910"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="911"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="912"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="913"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="914"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="915"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="916"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="917"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="918"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="919"
+        android:value="Австрия (Austria)" />
+    <extra
+        android:name="930"
+        android:value="Австралия (Australia)" />
+    <extra
+        android:name="931"
+        android:value="Австралия (Australia)" />
+    <extra
+        android:name="932"
+        android:value="Австралия (Australia)" />
+    <extra
+        android:name="933"
+        android:value="Австралия (Australia)" />
+    <extra
+        android:name="934"
+        android:value="Австралия (Australia)" />
+    <extra
+        android:name="935"
+        android:value="Австралия (Australia)" />
+    <extra
+        android:name="936"
+        android:value="Австралия (Australia)" />
+    <extra
+        android:name="937"
+        android:value="Австралия (Australia)" />
+    <extra
+        android:name="938"
+        android:value="Австралия (Australia)" />
+    <extra
+        android:name="939"
+        android:value="Австралия (Australia)" />
+    <extra
+        android:name="940"
+        android:value="Нова Зеландия (New Zealand)" />
+    <extra
+        android:name="941"
+        android:value="Нова Зеландия (New Zealand)" />
+    <extra
+        android:name="942"
+        android:value="Нова Зеландия (New Zealand)" />
+    <extra
+        android:name="943"
+        android:value="Нова Зеландия (New Zealand)" />
+    <extra
+        android:name="944"
+        android:value="Нова Зеландия (New Zealand)" />
+    <extra
+        android:name="945"
+        android:value="Нова Зеландия (New Zealand)" />
+    <extra
+        android:name="946"
+        android:value="Нова Зеландия (New Zealand)" />
+    <extra
+        android:name="947"
+        android:value="Нова Зеландия (New Zealand)" />
+    <extra
+        android:name="948"
+        android:value="Нова Зеландия (New Zealand)" />
+    <extra
+        android:name="949"
+        android:value="Нова Зеландия (New Zealand)" />
+    <extra
+        android:name="955"
+        android:value="Малайзия (Malaysia)" />
+</extras>

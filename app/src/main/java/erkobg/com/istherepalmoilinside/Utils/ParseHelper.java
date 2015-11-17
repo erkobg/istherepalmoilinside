@@ -66,8 +66,9 @@ public class ParseHelper {
 
     }
 
-    public void CheckProduct(String barcodeText) throws Exception {
+    public void CheckProduct(String barcodeText, String barcodeFormat) throws Exception {
         final String barcode = barcodeText;
+        final String barcodeformat = barcodeFormat;
         // 1
         ParseQuery<Product> mapQuery = Product.getQuery();
         // 2
@@ -80,7 +81,7 @@ public class ParseHelper {
                 if (e == null) {
                     listener.onProductCheckCompletedSuccess(object);
                 } else {
-                    listener.onProductCheckCompletedFail(barcode);
+                    listener.onProductCheckCompletedFail(barcode, barcodeformat);
                 }
             }
 

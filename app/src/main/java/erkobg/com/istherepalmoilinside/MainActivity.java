@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -39,6 +40,8 @@ import erkobg.com.istherepalmoilinside.Utils.ParseHelper;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnDataProcessListener {
     private boolean viewIsAtHome;
+    private boolean backToList;
+    private int previousView = 0;
     private NavigationView mNavigationView;
 
     @Override
@@ -102,8 +105,10 @@ public class MainActivity extends AppCompatActivity
 
     private void callBarcodeIntent() {
         if (isCameraAvailable()) {
+            previousView = 0;
+            previousView = 0;
             IntentIntegrator integrator = new IntentIntegrator(this);
-            integrator.setDesiredBarcodeFormats(IntentIntegrator.PRODUCT_CODE_TYPES);
+            integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
             integrator.setPrompt(getString(R.string.string_scan_barcode));
             integrator.setCameraId(0);  // Use a specific camera of the device
             integrator.setBeepEnabled(true);
@@ -123,7 +128,10 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             if (!viewIsAtHome) { //if the current view is not the News fragment
-                displayView(R.id.nav_home); //display the Home fragment
+                if (backToList)
+                    displayView(R.id.nav_product_list);
+                else
+                    displayView(R.id.nav_home); //display the Home fragment
             } else {
                 super.onBackPressed();
             }
@@ -179,6 +187,7 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null;
         String title = getString(R.string.app_name);
 
+        backToList = false;
         switch (viewId) {
             case R.id.nav_home:
                 fragment = new HomeFragment();
@@ -193,12 +202,7 @@ public class MainActivity extends AppCompatActivity
                 //no_big need to continue as this is another activity
                 mNavigationView.setCheckedItem(R.id.nav_home);
                 return;
-            case R.id.nav_list:
-                title = getString(R.string.title_list);
-                fragment = new ListProductsFragment();
-                viewIsAtHome = false;
-                mNavigationView.setCheckedItem(viewId);
-                break;
+
 
             case R.id.nav_register:
                 title = getString(R.string.sign_up_label);
@@ -231,7 +235,6 @@ public class MainActivity extends AppCompatActivity
                 fragment = new MyProgressFragment();
                 title = getResources().getString(R.string.checking);
                 viewIsAtHome = false;
-
                 mNavigationView.setCheckedItem(R.id.nav_home);
                 break;
 
@@ -247,6 +250,8 @@ public class MainActivity extends AppCompatActivity
 
 
             case CONSTANTS.NAVIGATE_SHOW_PRODUCT:
+                if (previousView == R.id.nav_product_list)
+                    backToList = true;
                 fragment = new ShowProductFragment();
                 title = getString(R.string.title_show_product);
                 Bundle args2 = new Bundle();
@@ -258,14 +263,24 @@ public class MainActivity extends AppCompatActivity
                 mNavigationView.setCheckedItem(R.id.nav_home);
                 viewIsAtHome = false;
                 break;
+            case R.id.nav_product_list:
+                title = getString(R.string.title_list);
+                fragment = new ListProductsFragment();
+                viewIsAtHome = false;
+                mNavigationView.setCheckedItem(viewId);
+                break;
         }
 
-
+        previousView = viewId;
         if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            Log.d("displayView", title);
-            ft.replace(R.id.fragment_container, fragment);
-            ft.commitAllowingStateLoss();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+
+            transaction.replace(R.id.fragment_container, fragment);
+
+            transaction.commitAllowingStateLoss();
         }
 
         // set the toolbar title
@@ -289,10 +304,11 @@ public class MainActivity extends AppCompatActivity
                 displayView(CONSTANTS.NAVIGATE_SHOW_PROGRESS);
                 //then query for progress
                 String scannedCode = result.getContents();
+                String barcodeFormat = result.getFormatName();
                 ParseHelper tmp = ParseHelper.getInstance(this, this);
 
                 try {
-                    tmp.CheckProduct(scannedCode);
+                    tmp.CheckProduct(scannedCode, barcodeFormat);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -305,16 +321,20 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
     @Override
-    public void onProductCheckCompletedSuccess(Product product) {
-        Log.d("onDataCheckCompleted", "Found");
+    public void onProductSelected(Product product) {
         displayView(CONSTANTS.NAVIGATE_SHOW_PRODUCT, product);
 
     }
 
     @Override
-    public void onProductCheckCompletedFail(String barcode) {
+    public void onProductCheckCompletedSuccess(Product product) {
+        displayView(CONSTANTS.NAVIGATE_SHOW_PRODUCT, product);
+
+    }
+
+    @Override
+    public void onProductCheckCompletedFail(String barcode, String barcodeformat) {
         Log.d("Fail", "Not Found");
         Toast.makeText(this, R.string.not_found, Toast.LENGTH_LONG).show();
         displayView(CONSTANTS.NAVIGATE_ADD_PRODUCT, barcode);

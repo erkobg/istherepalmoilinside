@@ -27,6 +27,7 @@
         </string>
     <string name="new_product_name">Име на продукта</string>
     <string name="new_product_barcode">Баркод</string>
+    <string name="new_product_origin">Страна произход</string>
     <string name="new_product_desc">Описание</string>
     <string name="new_product_hasPalmoil">Има ли палмово масло?</string>
     <string name="new_product_addNewbtn">Добави нов продукт</string>
@@ -40,7 +41,7 @@
     <string name="camera_not_available">Няма камера!?</string>
     <string name="login_message">Функционалността за вход е все още в процес на разработка</string>
     <string name="title_home">Начало</string>
-    <string name="title_list">Списък</string>
+    <string name="title_list">Списък продукти</string>
     <string name="title_about">За нас...</string>
     <string name="title_new_product">Добави продукт</string>
     <string name="title_show_product">Продукт</string>
@@ -55,7 +56,21 @@
     <string name="user_details_label">Данни за потребител</string>
     <string name="product_added">Продукта е добавен успешно!</string>
     <string name="already_have_an_account_label">Вече имате регистрация? Влезте!</string>
-    <string name="about_text">A long time ago, in a galaxy far, far away... It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. During the battle, Rebel spies managed to steal secret plans to the Empire\'s ultimate weapon, the Death Star, an armored space station with enough power to destroy an entire planet. Pursued by the Empire\'s sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy....</string>
+    <string name="about_text">
+        <![CDATA[
+        <h1> Провери за палмово масло </h1>
+        <p>Приложението превръща камерата на вашия смартфон в баркод скенер!</p>
+        <p>Използвайте мобилния си телефон за да сканирате и бързо и лесно да разберете дали дадения продукт съдържа палмово масло</p>
+        <h2>Как работи?</h2>
+        <p>Приложението работи с централна база данни от продукти, чийто списък се увеличава всеки ден. Всеки продукт се проверява дали е наличен в базата данни. При наличие се извежда информация за това дали дадения продукт съдържа палмово масло.</p>
+        <p>Ако дадения продукт не е наличен в базата данни на потребителя се предоставя възможност да въведе първи информация за продукта и за това дали съдържа палмово масло.</p>
+        <p>Така списъка с продукти нараства и се актуализира с помощта на всички.</p>
+        <p>За да се предотврати недобросъвестно записване на детайли за продукти и за да се контролира процеса, само определени потребители имат възможност да въвеждат данни.</p>
+        <p>Моля свържете се с нас ако имате желание да подпомогнете процеса за обогатяване на списъка с продукти</p>
+        <p><a href="mailto:blazzerbg@gmail.com?Subject=Относно приложение istherepalmoilinside" target="_top">Свържете се с нас!</a></p>
+<p>&nbsp;</p>
+<p>Всички права запазени, 2015</p>
+        ]]> </string>
     <string name="username_taken">Sorry, this username has already been taken.</string>
     <string name="supply_username">Sorry, you must supply a username to register.</string>
     <string name="supply_password">Sorry, you must supply a password to register.</string>
@@ -67,4 +82,5 @@
     <string name="user_logged_out">Излязохте успешно!</string>
     <string name="credential_invalid">Sorry, those credentials were invalid.</string>
     <string name="logout">Излез</string>
+    <string name="more_product_details">Повече детайли</string>
 </resources>
