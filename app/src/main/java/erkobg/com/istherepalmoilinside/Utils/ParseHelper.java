@@ -25,6 +25,7 @@ public class ParseHelper {
 
     }
 
+    @SuppressWarnings("unchecked")
     public static ParseHelper getInstance(Context context, OnDataProcessListener plistener) {
         if (instance == null) {
             instance = new ParseHelper(context, plistener);

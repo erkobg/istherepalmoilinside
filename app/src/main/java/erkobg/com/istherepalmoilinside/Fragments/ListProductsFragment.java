@@ -79,7 +79,6 @@ public class ListProductsFragment extends Fragment implements AdapterView.OnItem
     private void getProductsCount() {
         ParseQuery<Product> query = ParseQuery.getQuery(Product.class);
         query.countInBackground(new CountCallback() {
-
             public void done(int count, ParseException e) {
                 if (e == null) {
                     setTitle(count);

@@ -16,13 +16,18 @@ public class Product extends ParseObject {
   public static String descriptionColumn = "description";
   public static String haspalmoilColumn = "haspalmoil";
   public static String usernameColumn = "username";
+
+  public static ParseQuery<Product> getQuery() {
+    return ParseQuery.getQuery(Product.class);
+  }
+
   //barcode
   public String getBarcode() {
     return getString(barcodeColumn);
   }
 
   public void setBarcode(String value) {
-    put(barcodeColumn, value);
+    putValueLimited(barcodeColumn, value, 50);
   }
 
   //name
@@ -31,9 +36,8 @@ public class Product extends ParseObject {
   }
 
   public void setName(String value) {
-    put(nameColumn, value);
+    putValueLimited(nameColumn, value, 50);
   }
-
 
   //description
   public String getDescription() {
@@ -41,9 +45,8 @@ public class Product extends ParseObject {
   }
 
   public void setDescription(String value) {
-    put(descriptionColumn, value);
+    putValueLimited(descriptionColumn, value, 300);
   }
-
 
   //description
   public Boolean getHasPalmOil() {
@@ -54,8 +57,11 @@ public class Product extends ParseObject {
     put(haspalmoilColumn, value);
   }
 
-
-  public static ParseQuery<Product> getQuery() {
-    return ParseQuery.getQuery(Product.class);
+  private void putValueLimited(String field, String value, int limit) {
+    if (value.length() > limit)
+      put(field, value.substring(0, limit));
+    else
+      put(field, value);
   }
+
 }

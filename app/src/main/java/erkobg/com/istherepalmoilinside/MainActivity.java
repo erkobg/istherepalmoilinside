@@ -19,9 +19,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.parse.ParseUser;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import erkobg.com.istherepalmoilinside.Entities.Product;
 import erkobg.com.istherepalmoilinside.Fragments.AboutFragment;
@@ -51,6 +56,13 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // " adds"
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +120,10 @@ public class MainActivity extends AppCompatActivity
             previousView = 0;
             previousView = 0;
             IntentIntegrator integrator = new IntentIntegrator(this);
-            integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+            Collection<String> oDesiredFormats = Arrays.asList("UPC_A", "UPC_E", "EAN_8", "EAN_13", "RSS_14", "UPC_A", "UPC_E", "EAN_8", "EAN_13", "CODE_39", "CODE_93", "CODE_128",
+                    "ITF", "RSS_14", "RSS_EXPANDED");
+
+            integrator.setDesiredBarcodeFormats(oDesiredFormats);
             integrator.setPrompt(getString(R.string.string_scan_barcode));
             integrator.setCameraId(0);  // Use a specific camera of the device
             integrator.setBeepEnabled(true);

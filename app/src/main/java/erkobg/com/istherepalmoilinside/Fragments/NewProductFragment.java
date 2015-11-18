@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import erkobg.com.istherepalmoilinside.Entities.Product;
@@ -17,7 +18,9 @@ import erkobg.com.istherepalmoilinside.Utils.ParseHelper;
 import erkobg.com.istherepalmoilinside.Utils.ResourcesAdditions;
 
 public class NewProductFragment extends MyBaseFragment {
+    ProgressBar progressBarFooter;
     private Resources mResources;
+
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Bundle args = getArguments();
@@ -49,6 +52,9 @@ public class NewProductFragment extends MyBaseFragment {
         final TextView name = (TextView) v.findViewById(R.id.name);
         final TextView description = (TextView) v.findViewById(R.id.desc);
         final CheckBox HasPalmOil = (CheckBox) v.findViewById(R.id.HasPalmOil);
+        progressBarFooter = (ProgressBar)
+                v.findViewById(R.id.pbFooterLoading);
+
 
         //assign listener for the Button
         final Button button = (Button) v.findViewById(R.id.addButton);
@@ -76,7 +82,26 @@ public class NewProductFragment extends MyBaseFragment {
                 } else {
                     description.setError(null);
                 }
+                //disable edit boxes
+                name.setFocusable(false);
+                name.setClickable(false);
+                name.setEnabled(false);
 
+                description.setFocusable(false);
+                description.setClickable(false);
+                description.setEnabled(false);
+
+
+                HasPalmOil.setFocusable(false);
+                HasPalmOil.setClickable(false);
+                HasPalmOil.setEnabled(false);
+
+                button.setFocusable(false);
+                button.setClickable(false);
+                button.setEnabled(false);
+
+
+                progressBarFooter.setVisibility(View.VISIBLE);
 
                 //second if everything is ok - add the Product
                 try {

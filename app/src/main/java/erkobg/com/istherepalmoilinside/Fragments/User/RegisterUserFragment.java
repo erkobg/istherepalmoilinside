@@ -49,8 +49,25 @@ public class RegisterUserFragment extends MyBaseFragment implements View.OnClick
     @Override
     public void onClick(View v) {
         final View view = v;
-        if (mUsernameField.getText().length() == 0 || mPasswordField.getText().length() == 0 || mEmailField.getText().length() == 0)
+        if (mUsernameField.length() == 0) {
+            mUsernameField.setError(getString(R.string.user_mandatory));
             return;
+        } else {
+            mUsernameField.setError(null);
+        }
+        if (mPasswordField.length() == 0) {
+            mPasswordField.setError(getString(R.string.pass_mandatory));
+            return;
+        } else {
+            mPasswordField.setError(null);
+        }
+        if (mEmailField.length() == 0) {
+            mEmailField.setError(getString(R.string.email_mandatory));
+            return;
+        } else {
+            mEmailField.setError(null);
+        }
+
 
         view.setEnabled(false);
         ParseUser user = new ParseUser();
